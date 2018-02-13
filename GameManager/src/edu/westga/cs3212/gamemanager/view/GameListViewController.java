@@ -2,6 +2,7 @@ package edu.westga.cs3212.gamemanager.view;
 
 import java.io.IOException;
 
+import edu.westga.cs3212.gamemanager.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

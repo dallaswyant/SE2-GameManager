@@ -1,4 +1,4 @@
-package edu.westga.cs3212.gamemanager.view;
+package edu.westga.cs3212.gamemanager;
 	
 import java.net.URL;
 
@@ -11,15 +11,15 @@ import javafx.scene.layout.AnchorPane;
 
 public class Main extends Application {
 	
-	public static final String GAME_LIST_VIEW = "GameListView.fxml";
-	public static final String LANDING_VIEW = "LandingView.fxml";
-	public static final String NEW_GAME_VIEW = "NewGameView.fxml";
-	public static final String GAME_VIEW = "GameView.fxml";
+	public static final String GAME_LIST_VIEW = "view/GameListView.fxml";
+	public static final String LANDING_VIEW = "view/LandingView.fxml";
+	public static final String NEW_GAME_VIEW = "view/NewGameView.fxml";
+	public static final String GAME_VIEW = "view/GameView.fxml";
 	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			URL theUrl = getClass().getResource("LandingView.fxml");
+			URL theUrl = getClass().getResource(LANDING_VIEW);
 			AnchorPane thePane = FXMLLoader.load(theUrl);
 			Scene scene = new Scene(thePane);
 			primaryStage.setScene(scene);

@@ -2,6 +2,13 @@ package edu.westga.cs3212.gamemanager.model;
 
 import java.util.ArrayList;
 
+/**
+ * The game class.
+ * 
+ * @author Bryan, Caleb, Josh, Dallas
+ * @version 2/13/18
+ *
+ */
 public class Game {
 	private ArrayList<Player> players;
 	private Boolean isCompleted;
@@ -36,7 +43,7 @@ public class Game {
 			throw new IllegalArgumentException("Game type not entered");
 
 		}
-		
+
 		this.players = new ArrayList<Player>();
 		name = this.name;
 		type = this.type;

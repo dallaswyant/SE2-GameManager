@@ -1,4 +1,4 @@
-package edu.westga3212.model;
+package edu.westga.cs3212.gamemanager.model;
 
 import java.util.ArrayList;
 

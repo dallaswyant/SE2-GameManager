@@ -12,6 +12,7 @@ public class User {
 	private String username;
 	private ArrayList<Game> completed;
 	private ArrayList<Game> inProgress;
+	private Game currentGame;
 
 	/**
 	 * Constructor for user
@@ -32,6 +33,7 @@ public class User {
 		this.username = username;
 		this.completed = new ArrayList<Game>();
 		this.inProgress = new ArrayList<Game>();
+		this.currentGame = new Game("Defualt Game Name");
 	}
 
 	/**
@@ -54,6 +56,10 @@ public class User {
 			this.completed.remove(game);
 		}
 
+		if (game.getCompletedStatus()) {
+			game.setCompleteStatus(false);
+		}
+
 		this.inProgress.add(game);
 	}
 
@@ -66,7 +72,7 @@ public class User {
 	 * @param game
 	 *            game to be added to completed ArrayList
 	 */
-	public void markGameCompleted(Game game) {
+	public void addCompletedGame(Game game) {
 		if (game == null) {
 			throw new IllegalArgumentException("Game must exist");
 		}
@@ -75,6 +81,9 @@ public class User {
 		}
 		if (this.completed.contains(game)) {
 			this.completed.remove(game);
+		}
+		if (!game.getCompletedStatus()) {
+			game.setCompleteStatus(true);
 		}
 
 		this.completed.add(game);
@@ -137,4 +146,31 @@ public class User {
 		this.username = username;
 	}
 
+	/**
+	 * returns the current game
+	 * 
+	 * @precondition: none
+	 * @postcondition: none
+	 * 
+	 * @return the current game
+	 */
+	public Game getCurrentGame() {
+		return this.currentGame;
+	}
+
+	/**
+	 * Sets the current game
+	 * 
+	 * @precondition: currGame != null
+	 * @postcondition: currentGame = currgame
+	 * 
+	 * @param currGame
+	 *            current game of user
+	 */
+	public void setCurrentGame(Game currGame) {
+		if (currGame == null) {
+			throw new IllegalArgumentException("Current game must exist");
+		}
+		this.currentGame = currGame;
+	}
 }

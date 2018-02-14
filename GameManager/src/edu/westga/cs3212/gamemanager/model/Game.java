@@ -13,22 +13,17 @@ public class Game {
 	private ArrayList<Player> players;
 	private Boolean isCompleted;
 	private String name;
-	private String type;
 
 	/**
 	 * Constructor for Game class
 	 * 
-	 * @preconditions: name != null && name.isEmpty() != true type != null &&
-	 *                 type.isEmpty() != true
-	 * @postconditions: this.name = name && this.type = type && this.isCompleted =
-	 *                  false
+	 * @preconditions: name != null && name.isEmpty() != true
+	 * @postconditions: this.name = name && this.isCompleted = false
 	 * 
 	 * @param name
 	 *            name of the game
-	 * @param type
-	 *            type of game
 	 */
-	public Game(String name, String type) {
+	public Game(String name) {
 		if (name == null) {
 			throw new IllegalArgumentException("Invalid game name");
 		}
@@ -36,17 +31,9 @@ public class Game {
 			throw new IllegalArgumentException("Game name not entered");
 
 		}
-		if (type == null) {
-			throw new IllegalArgumentException("Invalid game type");
-		}
-		if (type.isEmpty()) {
-			throw new IllegalArgumentException("Game type not entered");
-
-		}
 
 		this.players = new ArrayList<Player>();
 		name = this.name;
-		type = this.type;
 		// I have set to false so each game starts as a new
 		this.isCompleted = false;
 
@@ -105,11 +92,7 @@ public class Game {
 	 * @return returns true or false based on status.
 	 */
 	public Boolean getCompletedStatus() {
-		if (this.isCompleted == true) {
-			return true;
-		} else {
-			return false;
-		}
+		return this.isCompleted;
 	}
 
 	/**

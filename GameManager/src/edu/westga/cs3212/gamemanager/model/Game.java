@@ -33,7 +33,7 @@ public class Game {
 		}
 
 		this.players = new ArrayList<Player>();
-		name = this.name;
+		this.name = name;
 		// I have set to false so each game starts as a new
 		this.isCompleted = false;
 
@@ -105,11 +105,17 @@ public class Game {
 	 *            the status
 	 */
 	public void setCompleteStatus(Boolean status) {
-		if (status == true) {
-			this.isCompleted = true;
-		} else {
-			this.isCompleted = false;
-		}
+		this.isCompleted = status;
 	}
+	
+	public String toString() {
+		return this.name;
+	}
+
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+	
+	
 
 }

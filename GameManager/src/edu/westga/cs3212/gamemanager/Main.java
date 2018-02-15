@@ -2,6 +2,9 @@ package edu.westga.cs3212.gamemanager;
 	
 import java.net.URL;
 
+import edu.westga.cs3212.gamemanager.model.Game;
+import edu.westga.cs3212.gamemanager.model.User;
+import edu.westga.cs3212.gamemanager.view_model.GameManagerManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
@@ -15,6 +18,7 @@ public class Main extends Application {
 	public static final String LANDING_VIEW = "view/LandingView.fxml";
 	public static final String NEW_GAME_VIEW = "view/NewGameView.fxml";
 	public static final String GAME_VIEW = "view/GameView.fxml";
+	public static GameManagerManager theManager = new GameManagerManager();
 	
 	@Override
 	public void start(Stage primaryStage) {

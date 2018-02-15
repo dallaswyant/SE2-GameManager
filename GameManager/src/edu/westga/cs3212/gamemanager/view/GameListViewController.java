@@ -1,8 +1,12 @@
 package edu.westga.cs3212.gamemanager.view;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import edu.westga.cs3212.gamemanager.Main;
+import edu.westga.cs3212.gamemanager.model.Game;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +20,10 @@ import javafx.stage.Stage;
 public class GameListViewController {
 
     @FXML
-    private ListView<?> inprogress_listview;
+    private ListView<Game> inprogress_listview;
 
     @FXML
-    private ListView<?> completed_listview;
+    private ListView<Game> completed_listview;
 
     @FXML
     private Button logout_btn;
@@ -55,6 +59,15 @@ public class GameListViewController {
     	loader.load();
     	Scene gameView = new Scene(loader.getRoot());
     	currentStage.setScene(gameView);
+    }
+    
+    @FXML
+    void initialize() {
+
+    	this.inprogress_listview.setItems(Main.theManager.getInProgressGames());
+
+    	this.completed_listview.setItems(Main.theManager.getCompletedGames());
+
     }
 
 }

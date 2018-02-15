@@ -32,8 +32,8 @@ public class Player {
 			throw new IllegalArgumentException("Name not entered");
 		}
 
-		name = this.name;
-		points = this.points;
+		this.name = name;
+		this.points = points;
 
 	}
 
@@ -126,6 +126,10 @@ public class Player {
 			throw new IllegalArgumentException("amount to add must be <= 0");
 		}
 		this.points = this.getPoints() - amount;
+	}
+	
+	public String toString() {
+		return this.name + "   " + this.points + "pts";
 	}
 
 }

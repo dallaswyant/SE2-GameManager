@@ -28,14 +28,14 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <RadioButton fx:id="radio_one" layoutX="25.0" layoutY="248.0" mnemonicParsing="false" />
-      <RadioButton fx:id="radio_two" layoutX="85.0" layoutY="248.0" mnemonicParsing="false" />
-      <RadioButton fx:id="radio_three" layoutX="145.0" layoutY="248.0" mnemonicParsing="false" />
-      <RadioButton fx:id="radio_four" layoutX="205.0" layoutY="248.0" mnemonicParsing="false" />
-      <RadioButton fx:id="radio_five" layoutX="265.0" layoutY="248.0" mnemonicParsing="false" />
-      <RadioButton fx:id="radio_six" layoutX="325.0" layoutY="248.0" mnemonicParsing="false" />
-      <RadioButton fx:id="radio_seven" layoutX="385.0" layoutY="248.0" mnemonicParsing="false" />
-      <RadioButton fx:id="radio_eight" layoutX="445.0" layoutY="248.0" mnemonicParsing="false" />
+      <RadioButton fx:id="radio1" layoutX="25.0" layoutY="248.0" mnemonicParsing="false" />
+      <RadioButton fx:id="radio2" layoutX="85.0" layoutY="248.0" mnemonicParsing="false" />
+      <RadioButton fx:id="radio3" layoutX="145.0" layoutY="248.0" mnemonicParsing="false" />
+      <RadioButton fx:id="radio4" layoutX="205.0" layoutY="248.0" mnemonicParsing="false" />
+      <RadioButton fx:id="radio5" layoutX="265.0" layoutY="248.0" mnemonicParsing="false" />
+      <RadioButton fx:id="radio6" layoutX="325.0" layoutY="248.0" mnemonicParsing="false" />
+      <RadioButton fx:id="radio7" layoutX="385.0" layoutY="248.0" mnemonicParsing="false" />
+      <RadioButton fx:id="radio8" layoutX="445.0" layoutY="248.0" mnemonicParsing="false" />
       <Label layoutX="29.0" layoutY="231.0" text="1" />
       <Label layoutX="89.0" layoutY="231.0" text="2" />
       <Label layoutX="450.0" layoutY="232.0" text="8" />
@@ -50,7 +50,7 @@
          </font>
       </Label>
       <Slider blockIncrement="1.0" layoutX="168.0" layoutY="132.0" majorTickUnit="1.0" max="15.0" min="1.0" minorTickCount="1" prefHeight="38.0" prefWidth="225.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
-      <TextField layoutX="108.0" layoutY="98.0" />
+      <TextField fx:id="gameName" layoutX="108.0" layoutY="98.0" />
       <TableView layoutX="22.0" layoutY="300.0" prefHeight="255.0" prefWidth="454.0">
         <columns>
           <TableColumn prefWidth="224.0" text="Player Name" />

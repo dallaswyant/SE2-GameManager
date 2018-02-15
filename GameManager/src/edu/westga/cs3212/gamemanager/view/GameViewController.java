@@ -49,7 +49,6 @@ public class GameViewController {
 
     @FXML
     void return_clicked(ActionEvent event) throws IOException {
-    	//TODO save somehow
     	this.saveGame();
     	Stage currentStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
     	FXMLLoader loader = new FXMLLoader();

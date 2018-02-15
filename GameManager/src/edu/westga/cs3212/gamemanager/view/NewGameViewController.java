@@ -83,7 +83,6 @@ public class NewGameViewController {
     		newGame.addPlayer(new Player("Player"+i,0));//0 for placeholding
     	}
     	Main.theManager.getTheUser().setCurrentGame(newGame);
-    	Main.theManager.getTheUser().addInProgressGame(newGame);
 	}
     
     @FXML

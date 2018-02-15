@@ -50,6 +50,7 @@ public class GameViewController {
     @FXML
     void return_clicked(ActionEvent event) throws IOException {
     	//TODO save somehow
+    	this.saveGame();
     	Stage currentStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
     	FXMLLoader loader = new FXMLLoader();
     	loader.setLocation(Main.class.getResource(Main.GAME_LIST_VIEW));
@@ -58,7 +59,12 @@ public class GameViewController {
     	currentStage.setScene(gameView);
     }
 
-    @FXML
+    private void saveGame() {
+    	Main.theManager.SaveCurrentGame();
+	}
+
+
+	@FXML
     void initialize() {
     	this.players.setItems(Main.theManager.getPlayersInCurrentGame());
     	this.gameNameLabel.setText(Main.theManager.getTheUser().getCurrentGame().toString());

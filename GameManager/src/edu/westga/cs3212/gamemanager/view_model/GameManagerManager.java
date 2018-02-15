@@ -1,10 +1,13 @@
 package edu.westga.cs3212.gamemanager.view_model;
 
+import java.util.ArrayList;
+
 import edu.westga.cs3212.gamemanager.model.Game;
 import edu.westga.cs3212.gamemanager.model.Player;
 import edu.westga.cs3212.gamemanager.model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.ListView;
 
 public class GameManagerManager {
 
@@ -39,6 +42,20 @@ public class GameManagerManager {
 		this.completedGames = FXCollections.observableList(this.theUser.getCompletedGames());
 		return completedGames;
 	}
+	
+	
+
+	public void setCompletedGames(ObservableList<Game> completedGames) {
+		this.completedGames = completedGames;
+	}
+
+	public void setInProgressGames(ObservableList<Game> inProgressGames) {
+		this.inProgressGames = inProgressGames;
+	}
+
+	public void setPlayersInCurrentGame(ObservableList<Player> playersInCurrentGame) {
+		this.playersInCurrentGame = playersInCurrentGame;
+	}
 
 	public ObservableList<Game> getInProgressGames() {
 		this.inProgressGames = FXCollections.observableList(this.theUser.getInProgressGames());
@@ -54,6 +71,20 @@ public class GameManagerManager {
 		return playersInCurrentGame;
 	}
 
+	public void SaveCurrentGame() {
+		Object[] players = this.playersInCurrentGame.toArray();
+		ArrayList<Player> playerList = new ArrayList<Player>();
+		for(int i=0;i<players.length;i++) {
+			System.out.println(players[i]);
+			playerList.add((Player) players[i]);
+		}
+		String gameName = this.theUser.getCurrentGame().toString();
+		Game theOldCurrentGame = new Game(gameName);
+		for(Player currPlayer:playerList) {
+			theOldCurrentGame.addPlayer(currPlayer);
+		}
+		this.theUser.addInProgressGame(theOldCurrentGame);
+	}
 	
 	
 	

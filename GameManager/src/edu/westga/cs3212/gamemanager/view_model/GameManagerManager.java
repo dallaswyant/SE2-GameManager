@@ -8,7 +8,6 @@ import edu.westga.cs3212.gamemanager.model.Player;
 import edu.westga.cs3212.gamemanager.model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.ListView;
 
 public class GameManagerManager {
 

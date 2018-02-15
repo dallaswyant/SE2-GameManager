@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
@@ -51,6 +52,9 @@ public class NewGameViewController {
     
     @FXML
     private TextField gameName;
+    
+    @FXML
+    private Slider pointIncrement_slider;
 
     @FXML
     void cancel_clicked(ActionEvent event) throws IOException {
@@ -74,7 +78,7 @@ public class NewGameViewController {
     }
 
 	private void setUpNewGame() {
-		Game newGame = new Game(gameName.getText());
+		Game newGame = new Game(gameName.getText(),(int)this.pointIncrement_slider.getValue());
     	RadioButton selected = (RadioButton) this.buttons.getSelectedToggle();
     	String value = selected.getId();
     	String[] values = value.split("o");
@@ -89,22 +93,22 @@ public class NewGameViewController {
     void initialize() {
     	this.buttons = new ToggleGroup();
     	this.radio1.setToggleGroup(this.buttons);
-    	this.radio1.setUserData("1");
+    	this.radio1.setUserData(1);
     	this.radio1.setSelected(true);
     	this.radio2.setToggleGroup(this.buttons);
-    	this.radio1.setUserData("2");
+    	this.radio2.setUserData(2);
     	this.radio3.setToggleGroup(this.buttons);
-    	this.radio1.setUserData("3");
+    	this.radio3.setUserData(3);
     	this.radio4.setToggleGroup(this.buttons);
-    	this.radio1.setUserData("4");
+    	this.radio4.setUserData(4);
     	this.radio5.setToggleGroup(this.buttons);
-    	this.radio1.setUserData("5");
+    	this.radio5.setUserData(5);
     	this.radio6.setToggleGroup(this.buttons);
-    	this.radio1.setUserData("6");
+    	this.radio6.setUserData(6);
     	this.radio7.setToggleGroup(this.buttons);
-    	this.radio1.setUserData("7");
+    	this.radio7.setUserData(7);
     	this.radio8.setToggleGroup(this.buttons);
-    	this.radio1.setUserData("8");
+    	this.radio8.setUserData(8);
     }
 
 }

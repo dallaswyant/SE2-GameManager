@@ -34,14 +34,14 @@ public class GameViewController {
 
     @FXML
     void minus_clicked(ActionEvent event) {
-    	this.players.getSelectionModel().getSelectedItem().removePoints(1);
+    	this.players.getSelectionModel().getSelectedItem().removePoints(Main.theManager.getTheUser().getCurrentGame().getPointIncrementValue());
     	this.players.refresh();
     }
 
 
     @FXML
     void plus_clicked(ActionEvent event) {
-    	this.players.getSelectionModel().getSelectedItem().addPoints(1);
+    	this.players.getSelectionModel().getSelectedItem().addPoints(Main.theManager.getTheUser().getCurrentGame().getPointIncrementValue());
     	this.players.refresh();
     }
 

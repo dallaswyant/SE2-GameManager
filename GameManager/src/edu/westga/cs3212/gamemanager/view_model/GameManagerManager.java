@@ -1,6 +1,7 @@
 package edu.westga.cs3212.gamemanager.view_model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import edu.westga.cs3212.gamemanager.model.Game;
 import edu.westga.cs3212.gamemanager.model.Player;
@@ -25,17 +26,14 @@ public class GameManagerManager {
 	}
 	
 	private void populateUserWithGames() {
-		this.theUser.addInProgressGame(new Game("FOOTBALL"));
-		this.theUser.addInProgressGame(new Game("SOCCER"));
-		this.theUser.addInProgressGame(new Game("BASEBALL"));
-		this.theUser.addInProgressGame(new Game("BOWLING"));
-		this.theUser.addInProgressGame(new Game("SLEEPING"));
-		this.theUser.addInProgressGame(new Game("BALLROOM DANCING"));
-		this.theUser.addInProgressGame(new Game("GOLF"));
-		this.theUser.addInProgressGame(new Game("SKIING"));
-		this.theUser.addCompletedGame(new Game("D&D"));
-		this.theUser.addCompletedGame(new Game("CHESS"));
-		this.theUser.addCompletedGame(new Game("CHECKERS"));
+		for(int i=0;i<10;i++) {
+			Game newGame = new Game("GAME"+i);
+			Random random = new Random();
+			for(int j=0;j<(random.nextInt(7)+1);j++) {
+				newGame.addPlayer(new Player("PLAYER"+j,random.nextInt(100)));
+			}
+			this.theUser.addInProgressGame(newGame);
+		}
 	}
 	
 	public ObservableList<Game> getCompletedGames() {
@@ -75,7 +73,6 @@ public class GameManagerManager {
 		Object[] players = this.playersInCurrentGame.toArray();
 		ArrayList<Player> playerList = new ArrayList<Player>();
 		for(int i=0;i<players.length;i++) {
-			System.out.println(players[i]);
 			playerList.add((Player) players[i]);
 		}
 		String gameName = this.theUser.getCurrentGame().toString();
@@ -83,7 +80,20 @@ public class GameManagerManager {
 		for(Player currPlayer:playerList) {
 			theOldCurrentGame.addPlayer(currPlayer);
 		}
-		this.theUser.addInProgressGame(theOldCurrentGame);
+		int removalIndex = 55;
+		int counter = 0;
+		for(Game currGame:this.theUser.getInProgressGames()) {
+			if(currGame==this.theUser.getCurrentGame()) {
+				removalIndex = counter;
+			}
+			counter++;
+		}
+		if(removalIndex!=55) {
+			this.theUser.getInProgressGames().remove(removalIndex);
+		} 
+			this.theUser.addInProgressGame(theOldCurrentGame);
+
+		
 	}
 	
 	

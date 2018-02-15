@@ -37,8 +37,17 @@ public class GameListViewController {
     }
 
     @FXML
-    void inprogress_clicked(MouseEvent event) {
-
+    void inprogress_clicked(MouseEvent event) throws IOException {
+    	if(this.inprogress_listview.getSelectionModel().getSelectedItem()!=null) {
+    		Game currentGame = this.inprogress_listview.getSelectionModel().getSelectedItem();
+    		Main.theManager.getTheUser().setCurrentGame(currentGame);
+    		Stage currentStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        	FXMLLoader loader = new FXMLLoader();
+        	loader.setLocation(Main.class.getResource(Main.GAME_VIEW));
+        	loader.load();
+        	Scene gameView = new Scene(loader.getRoot());
+        	currentStage.setScene(gameView);
+    	}
     }
 
     @FXML

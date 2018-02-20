@@ -35,11 +35,10 @@ public class Game {
 		this.pointIncrementValue = 1;
 		this.players = new ArrayList<Player>();
 		this.name = name;
-		// I have set to false so each game starts as a new
 		this.isCompleted = false;
 
 	}
-	
+
 	/**
 	 * Constructor for Game class
 	 * 
@@ -49,7 +48,7 @@ public class Game {
 	 * @param name
 	 *            name of the game
 	 * @param pointIncrementValue
-	 * 			  the number by which we will increment/decrement points
+	 *            the number by which we will increment/decrement points
 	 */
 	public Game(String name, int pointIncrementValue) {
 		if (name == null) {
@@ -58,12 +57,11 @@ public class Game {
 		if (name.isEmpty()) {
 			throw new IllegalArgumentException("Game name not entered");
 		}
-		if (pointIncrementValue<1) {
+		if (pointIncrementValue < 1) {
 			throw new IllegalArgumentException("Cannot have negative point increment value");
 		}
 		this.players = new ArrayList<Player>();
 		this.name = name;
-		// I have set to false so each game starts as a new
 		this.isCompleted = false;
 		this.pointIncrementValue = pointIncrementValue;
 	}
@@ -136,19 +134,32 @@ public class Game {
 	public void setCompleteStatus(Boolean status) {
 		this.isCompleted = status;
 	}
-	
+
+	/**
+	 * Returns a string representation of the object.
+	 * 
+	 * @return A string describing the object.
+	 */
 	public String toString() {
 		return this.name;
 	}
 
+	/**
+	 * Returns the list of players.
+	 * 
+	 * @return The list of players.
+	 */
 	public ArrayList<Player> getPlayers() {
 		return players;
 	}
-	
+
+	/**
+	 * Returns the current point increment value.
+	 * 
+	 * @return Current point increment value.
+	 */
 	public int getPointIncrementValue() {
 		return this.pointIncrementValue;
 	}
-	
-	
 
 }

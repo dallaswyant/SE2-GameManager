@@ -9,6 +9,13 @@ import edu.westga.cs3212.gamemanager.model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+/**
+ * GameManager View-model that manages players and implementations 
+ * of the game such as save game, progress. and adding players, etc
+ * @author Dallas, Josh, Caleb, Bryan
+ * @version 2/13/2018
+ *
+ */
 public class GameManagerManager {
 
 	private ObservableList<Game> completedGames;
@@ -25,11 +32,11 @@ public class GameManagerManager {
 	}
 	
 	private void populateUserWithGames() {
-		for(int i=0;i<10;i++) {
-			Game newGame = new Game("GAME"+i);
+		for (int i = 0; i < 10; i++) {
+			Game newGame = new Game("GAME" + i);
 			Random random = new Random();
-			for(int j=0;j<(random.nextInt(7)+1);j++) {
-				newGame.addPlayer(new Player("PLAYER"+j,random.nextInt(100)));
+			for (int j = 0; j < (random.nextInt(7) + 1); j++) {
+				newGame.addPlayer(new Player("PLAYER" + j, random.nextInt(100)));
 			}
 			this.theUser.addInProgressGame(newGame);
 		}
@@ -37,7 +44,7 @@ public class GameManagerManager {
 	
 	public ObservableList<Game> getCompletedGames() {
 		this.completedGames = FXCollections.observableList(this.theUser.getCompletedGames());
-		return completedGames;
+		return this.completedGames;
 	}
 	
 	
@@ -56,22 +63,22 @@ public class GameManagerManager {
 
 	public ObservableList<Game> getInProgressGames() {
 		this.inProgressGames = FXCollections.observableList(this.theUser.getInProgressGames());
-		return inProgressGames;
+		return this.inProgressGames;
 	}
 
 	public User getTheUser() {
-		return theUser;
+		return this.theUser;
 	}
 
 	public ObservableList<Player> getPlayersInCurrentGame() {
 		this.playersInCurrentGame = FXCollections.observableList(this.theUser.getCurrentGame().getPlayers());
-		return playersInCurrentGame;
+		return this.playersInCurrentGame;
 	}
 
 	public void SaveCurrentGame() {
 		Object[] players = this.playersInCurrentGame.toArray();
 		ArrayList<Player> playerList = new ArrayList<Player>();
-		for(int i=0;i<players.length;i++) {
+		for ( int i = 0; i < players.length;i++) {
 			playerList.add((Player) players[i]);
 		}
 		String gameName = this.theUser.getCurrentGame().toString();

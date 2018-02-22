@@ -59,7 +59,7 @@ public class GameViewController {
     }
 
     private void saveGame() {
-    	Main.theManager.SaveCurrentGame();
+    	Main.theManager.saveCurrentGame();
 	}
 
 

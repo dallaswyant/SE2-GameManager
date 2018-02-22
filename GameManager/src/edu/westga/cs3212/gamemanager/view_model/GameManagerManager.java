@@ -75,29 +75,29 @@ public class GameManagerManager {
 		return this.playersInCurrentGame;
 	}
 
-	public void SaveCurrentGame() {
+	public void saveCurrentGame() {
 		Object[] players = this.playersInCurrentGame.toArray();
 		ArrayList<Player> playerList = new ArrayList<Player>();
-		for ( int i = 0; i < players.length;i++) {
+		for (int i = 0; i < players.length; i++) {
 			playerList.add((Player) players[i]);
 		}
 		String gameName = this.theUser.getCurrentGame().toString();
 		Game theOldCurrentGame = new Game(gameName);
-		for(Player currPlayer:playerList) {
+		for (Player currPlayer:playerList) {
 			theOldCurrentGame.addPlayer(currPlayer);
 		}
 		int removalIndex = 55;
 		int counter = 0;
-		for(Game currGame:this.theUser.getInProgressGames()) {
-			if(currGame==this.theUser.getCurrentGame()) {
+		for (Game currGame:this.theUser.getInProgressGames()) {
+			if (currGame == this.theUser.getCurrentGame()) {
 				removalIndex = counter;
 			}
 			counter++;
 		}
-		if(removalIndex!=55) {
+		if (removalIndex != 55) {
 			this.theUser.getInProgressGames().remove(removalIndex);
 		} 
-			this.theUser.addInProgressGame(theOldCurrentGame);
+		this.theUser.addInProgressGame(theOldCurrentGame);
 
 		
 	}

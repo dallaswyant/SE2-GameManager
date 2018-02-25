@@ -1,4 +1,4 @@
-package edu.westga.cs3212.userTests;
+package tests.gamemanager;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,14 +8,13 @@ import edu.westga.cs3212.gamemanager.model.Game;
 import edu.westga.cs3212.gamemanager.model.Player;
 import edu.westga.cs3212.gamemanager.model.User;
 
-class testAddProgressGame {
-	
-	
+class TestAddCompletedGames {
+
 	@Test
 	void testGameNull() {
 		User user = new User("Geekster101");
 		Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-			user.addInProgressGame(null);
+			user.addCompletedGame(null);
 		});
 		assertEquals("Game must exist", exception.getMessage());
 	}
@@ -68,11 +67,12 @@ class testAddProgressGame {
 	}
 	
 	@Test
-	void testAddValidInProgressGame(){
+	void testAddValidInCompleted(){
 		Game game1 = new Game("Default");
 		User user = new User("Peter Griffin");
-		user.addInProgressGame(game1);
-		assertEquals(game1, user.getInProgressGames().get(0));
+		game1.setCompleteStatus(true);
+		user.addCompletedGame(game1);
+		assertTrue(user.getCompletedGames().get(0).getCompletedStatus());
 		
 	}
 	
@@ -82,12 +82,11 @@ class testAddProgressGame {
 		Game game2= new Game("Game2");
 		Game game3 = new Game("Game3");
 		User user = new User("Peter Griffin");
-		user.addInProgressGame(game1);
-		user.addInProgressGame(game2);
-		user.addInProgressGame(game3);
-		assertEquals(3, user.getInProgressGames().size());
+		user.addCompletedGame(game1);
+		user.addCompletedGame(game2);
+		user.addCompletedGame(game3);
+		assertEquals(3, user.getCompletedGames().size());
 		
 	}
-	
 
 }

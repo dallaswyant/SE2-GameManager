@@ -38,6 +38,10 @@ public class GameManagerViewModel {
 		this.completedGames = FXCollections.observableList(this.theUser.getCompletedGames());
 		this.playersInCurrentGame = FXCollections.observableList(this.theUser.getCurrentGame().getPlayers());
 	}
+	
+	public void clearPlayersInCurrentGame() {
+		this.playersInCurrentGame = FXCollections.observableList(new ArrayList<Player>());
+	}
 
 	private void populateUserWithGames() {
 		for (int i = 0; i < 10; i++) {
@@ -142,9 +146,16 @@ public class GameManagerViewModel {
 	 * 
 	 * @return players in current game
 	 */
-	public ObservableList<Player> getPlayersInCurrentGame() {
+	/**public ObservableList<Player> getPlayersInCurrentGame() {
 		this.playersInCurrentGame = FXCollections.observableList(this.theUser.getCurrentGame().getPlayers());
 		return this.playersInCurrentGame;
+	}**/
+	public ObservableList<Player> getPlayersInCurrentGame() {
+		return this.playersInCurrentGame;
+	}
+	
+	public void addPlayersToCurrentGame(Player newPlayer) {
+		this.playersInCurrentGame.add(newPlayer);
 	}
 
 	/**

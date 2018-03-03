@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="600.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="edu.westga.cs3212.gamemanager.view.NewGameViewController">
+<AnchorPane prefHeight="600.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.westga.cs3212.gamemanager.view.NewGameViewController">
    <children>
       <Label layoutX="138.0" layoutY="14.0" prefHeight="68.0" prefWidth="225.0" text="New Game">
          <font>
@@ -51,10 +50,12 @@
       </Label>
       <Slider fx:id="pointIncrement_slider" blockIncrement="1.0" layoutX="168.0" layoutY="132.0" majorTickUnit="1.0" max="15.0" min="1.0" minorTickCount="1" prefHeight="38.0" prefWidth="225.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
       <TextField fx:id="gameName" layoutX="108.0" layoutY="98.0" />
-      <TableView layoutX="22.0" layoutY="300.0" prefHeight="255.0" prefWidth="454.0">
+      <TableView fx:id="playerTable" layoutX="22.0" layoutY="300.0" editable="true" prefHeight="255.0" prefWidth="454.0">
         <columns>
-          <TableColumn prefWidth="224.0" text="Player Name" />
-          <TableColumn prefWidth="229.0" text="Player Points" />
+        
+          <TableColumn fx:id="playerNames" prefWidth="224.0" text="Player Names" />
+          <TableColumn fx:id="playerScores" prefWidth="229.0" text="Player Scores" />
+          
         </columns>
       </TableView>
       <Button fx:id="cancel_btn" layoutX="23.0" layoutY="561.0" mnemonicParsing="false" onAction="#cancel_clicked" text="Cancel" />

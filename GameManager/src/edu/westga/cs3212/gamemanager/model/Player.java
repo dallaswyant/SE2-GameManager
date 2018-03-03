@@ -1,5 +1,10 @@
 package edu.westga.cs3212.gamemanager.model;
 
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
  * The player class.
  * 
@@ -11,6 +16,8 @@ public class Player {
 
 	private int points;
 	private String name;
+	private IntegerProperty playerScore;
+    private StringProperty playerName;
 
 	// TODO Player constructor specification
 	/**
@@ -34,8 +41,40 @@ public class Player {
 
 		this.name = name;
 		this.points = points;
+		this.playerName = new SimpleStringProperty(name);
+		this.playerScore = new SimpleIntegerProperty(points);
 
 	}
+
+	public Integer getPlayerScore() {
+		this.playerScore.set(this.points);
+		return this.playerScore.get();
+	}
+
+	public String getPlayerName() {
+		this.playerName.set(this.name);
+		return this.playerName.get();
+	}
+	
+	public IntegerProperty getPlayerScoreProperty() {
+		return this.playerScore;
+	}
+
+	public StringProperty getPlayerNameProperty() {
+		return this.playerName;
+	}
+
+	public void setPlayerScore(int score) {
+		this.playerScore.set(score);
+	}
+
+
+
+	public void setPlayerName(String name) {
+		this.playerName.set(name);;
+	}
+
+
 
 	// TODO
 	/**

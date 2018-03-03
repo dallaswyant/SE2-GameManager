@@ -10,10 +10,12 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableColumn;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -63,6 +65,7 @@ public class GameListViewController {
     @FXML
     void newgame_clicked(ActionEvent event) throws IOException {
     	Stage currentStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+    	
     	FXMLLoader loader = new FXMLLoader();
     	loader.setLocation(Main.class.getResource(Main.NEW_GAME_VIEW));
     	loader.load();

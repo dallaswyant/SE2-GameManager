@@ -1,6 +1,7 @@
 package edu.westga.cs3212.gamemanager.view;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 import edu.westga.cs3212.gamemanager.Main;
@@ -83,58 +84,61 @@ public class GameViewController {
 
     @FXML
     void addPlayer_clicked(ActionEvent event) {
-    	// Create the custom dialog.
     	Dialog<Pair<String, String>> dialog = new Dialog<>();
-    	dialog.setTitle("Login Dialog");
-    	dialog.setHeaderText("Look, a Custom Login Dialog");
+    	dialog.setTitle("Add new Player");
+    	dialog.setHeaderText("Please input the name and the score for the new player.");
 
+    	ButtonType confirmButton = new ButtonType("Confirm", ButtonData.OK_DONE);
+    	dialog.getDialogPane().getButtonTypes().addAll(confirmButton, ButtonType.CANCEL);
 
-    	// Set the button types.
-    	ButtonType loginButtonType = new ButtonType("Confirm", ButtonData.OK_DONE);
-    	dialog.getDialogPane().getButtonTypes().addAll(loginButtonType, ButtonType.CANCEL);
-
-    	// Create the username and password labels and fields.
     	GridPane grid = new GridPane();
     	grid.setHgap(10);
     	grid.setVgap(10);
     	grid.setPadding(new Insets(20, 150, 10, 10));
 
-    	TextField username = new TextField();
-    	username.setPromptText("New Player");
-    	TextField points = new TextField();
-    	points.setPromptText("0");
+    	TextField newPlayerName = new TextField();
+    	newPlayerName.setPromptText("New Player");
+    	TextField newPlayerPoints = new TextField();
+    	newPlayerPoints.setPromptText("0");
 
     	grid.add(new Label("Player name:"), 0, 0);
-    	grid.add(username, 1, 0);
+    	grid.add(newPlayerName, 1, 0);
     	grid.add(new Label("Points:"), 0, 1);
-    	grid.add(points, 1, 1);
+    	grid.add(newPlayerPoints, 1, 1);
 
     	// Enable/Disable login button depending on whether a username was entered.
-    	Node loginButton = dialog.getDialogPane().lookupButton(loginButtonType);
+    	Node loginButton = dialog.getDialogPane().lookupButton(confirmButton);
     	loginButton.setDisable(true);
 
     	// Do some validation (using the Java 8 lambda syntax).
-    	username.textProperty().addListener((observable, oldValue, newValue) -> {
+    	newPlayerName.textProperty().addListener((observable, oldValue, newValue) -> {
     	    loginButton.setDisable(newValue.trim().isEmpty());
     	});
 
     	dialog.getDialogPane().setContent(grid);
 
-    	// Request focus on the username field by default.
-    	Platform.runLater(() -> username.requestFocus());
+    	Platform.runLater(() -> newPlayerName.requestFocus());
 
-    	// Convert the result to a username-password-pair when the login button is clicked.
     	dialog.setResultConverter(dialogButton -> {
-    	    if (dialogButton == loginButtonType) {
-    	        return new Pair<>(username.getText(), points.getText());
+    	    if (dialogButton == confirmButton) {
+    	        return new Pair<>(newPlayerName.getText(), newPlayerPoints.getText());
     	    }
     	    return null;
     	});
 
     	Optional<Pair<String, String>> result = dialog.showAndWait();
 
-    	result.ifPresent(usernamePassword -> {
-    	    System.out.println("Name=" + usernamePassword.getKey() + ", Points=" + usernamePassword.getValue());
+    	result.ifPresent(playerNamePoints -> {
+    		int points = 0;
+    		try {
+    			points = Integer.parseInt(playerNamePoints.getValue());
+    		} catch (Exception e) {
+    			
+    		}
+    		Player newPlayer = new Player(playerNamePoints.getKey(),points);
+    		Main.theManager.getTheUser().getCurrentGame().addPlayer(newPlayer);
+    		this.players.setItems(FXCollections.observableList(Main.theManager.getTheUser().getCurrentGame().getPlayers()));
+    	    System.out.println(playerNamePoints.getKey() + playerNamePoints.getValue());
     	});
     }
 

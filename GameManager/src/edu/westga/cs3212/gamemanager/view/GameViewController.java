@@ -9,26 +9,20 @@ import edu.westga.cs3212.gamemanager.model.Player;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBar.ButtonData;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.ContextMenu;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
 import javafx.util.Pair;
 
 public class GameViewController {
@@ -106,11 +100,9 @@ public class GameViewController {
     	grid.add(new Label("Points:"), 0, 1);
     	grid.add(newPlayerPoints, 1, 1);
 
-    	// Enable/Disable login button depending on whether a username was entered.
     	Node loginButton = dialog.getDialogPane().lookupButton(confirmButton);
     	loginButton.setDisable(true);
 
-    	// Do some validation (using the Java 8 lambda syntax).
     	newPlayerName.textProperty().addListener((observable, oldValue, newValue) -> {
     	    loginButton.setDisable(newValue.trim().isEmpty());
     	});

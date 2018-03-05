@@ -19,7 +19,6 @@ public class Player {
 	private IntegerProperty playerScore;
     private StringProperty playerName;
 
-	// TODO Player constructor specification
 	/**
 	 * Player constructor
 	 * 

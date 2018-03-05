@@ -47,31 +47,19 @@ public class Player {
 	}
 
 	public Integer getPlayerScore() {
-		this.playerScore.set(this.points);
 		return this.playerScore.get();
 	}
 
 	public String getPlayerName() {
-		this.playerName.set(this.name);
 		return this.playerName.get();
-	}
-	
-	public IntegerProperty getPlayerScoreProperty() {
-		return this.playerScore;
-	}
-
-	public StringProperty getPlayerNameProperty() {
-		return this.playerName;
 	}
 
 	public void setPlayerScore(int score) {
 		this.playerScore.set(score);
 	}
 
-
-
 	public void setPlayerName(String name) {
-		this.playerName.set(name);;
+		this.playerName.set(name);
 	}
 
 

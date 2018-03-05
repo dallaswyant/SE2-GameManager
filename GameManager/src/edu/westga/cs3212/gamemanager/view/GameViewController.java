@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import edu.westga.cs3212.gamemanager.Main;
 import edu.westga.cs3212.gamemanager.model.Player;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -67,7 +68,7 @@ public class GameViewController {
 
 	@FXML
 	void initialize() {
-		this.players.setItems(Main.theManager.getPlayersInCurrentGame());
+		this.players.setItems(FXCollections.observableList(Main.theManager.getTheUser().getCurrentGame().getPlayers()));
 		this.gameNameLabel.setText(Main.theManager.getTheUser().getCurrentGame().toString());
 	}
 

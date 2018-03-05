@@ -9,6 +9,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -20,12 +21,16 @@ import javafx.scene.control.Slider;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableColumn.CellDataFeatures;
+import javafx.scene.control.TableColumn.CellEditEvent;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
@@ -107,10 +112,12 @@ public class NewGameViewController {
 	private void setUpNewGame() {
 		try {
 			Game newGame = new Game(gameName.getText(),(int)this.pointIncrement_slider.getValue());
-			//for(Player current:) {
-			//	newGame.addPlayer(current);
-			//}
+			for(int i = 0; i<this.playerTable.getItems().size();i++) {
+				Player newPlayer = new Player(this.playerNames.getCellData(i),this.playerScores.getCellData(i));
+				newGame.addPlayer(newPlayer);
+			}
 	    	Main.theManager.getTheUser().setCurrentGame(newGame);
+
 		} catch(IllegalArgumentException iae) {
 			throw iae;
 		}
@@ -142,12 +149,33 @@ public class NewGameViewController {
 
     	this.playerNames.setCellValueFactory(new PropertyValueFactory<Player,String>("playerName"));
     	this.playerScores.setCellValueFactory(new PropertyValueFactory<Player,Integer>("playerScore"));
-    	this.playerNames.setCellFactory(createPlayerNameCellFactory());
+
+    	this.playerNames.setCellFactory(TextFieldTableCell.forTableColumn());
     	this.playerScores.setCellFactory(createPlayerScoreCellFactory());
     	this.playerTable.setItems(Main.theManager.getPlayersInCurrentGame());
-
+    	this.playerNames.setOnEditCommit(
+                new EventHandler<CellEditEvent<Player, String>>() {
+                    @Override
+                    public void handle(CellEditEvent<Player, String> t) {
+                        ((Player) t.getTableView().getItems().get(
+                                t.getTablePosition().getRow())
+                                ).setPlayerName(t.getNewValue());
+                        System.out.println(t.toString());
+                    }
+                }
+            );
+    	this.playerScores.setOnEditCommit(
+                new EventHandler<CellEditEvent<Player, Integer>>() {
+                    @Override
+                    public void handle(CellEditEvent<Player, Integer> t) {
+                        ((Player) t.getTableView().getItems().get(
+                                t.getTablePosition().getRow())
+                                ).setPlayerScore(t.getNewValue());
+                    }
+                }
+            );
     	this.playerTable.getSelectionModel().setCellSelectionEnabled(true);
-    	
+
     	this.buttons.selectedToggleProperty().addListener(new ChangeListener<Toggle>(){
             public void changed(ObservableValue<? extends Toggle> ov,
                 Toggle toggle, Toggle new_toggle) {
@@ -165,26 +193,6 @@ public class NewGameViewController {
                        
             }
         });
-    }
-    
-    private Callback<TableColumn<Player, String>, TableCell<Player, String>>  createPlayerNameCellFactory() {
-
-        Callback<TableColumn<Player, String>, TableCell<Player, String>> factory = TextFieldTableCell.forTableColumn( new StringConverter<String>() {
-
-            @Override
-            public String fromString(String string) {
-                return string;
-            }
-
-
-
-			@Override
-			public String toString(String arg0) {
-				return arg0;
-			}
-        });
-
-        return factory;
     }
     
     private Callback<TableColumn<Player, Integer>, TableCell<Player, Integer>>  createPlayerScoreCellFactory() {
@@ -218,17 +226,6 @@ public class NewGameViewController {
         });
 
         return factory;
-    }
-    
-    @FXML
-    void edited_name(ActionEvent event) {
-    	Player current = this.playerTable.getSelectionModel().getSelectedItem();
-    	System.out.println(current);
-    }
-
-    @FXML
-    void edited_score(ActionEvent event) {
-
     }
 
 

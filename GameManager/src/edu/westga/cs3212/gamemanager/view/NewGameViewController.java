@@ -160,7 +160,6 @@ public class NewGameViewController {
                         ((Player) t.getTableView().getItems().get(
                                 t.getTablePosition().getRow())
                                 ).setPlayerName(t.getNewValue());
-                        System.out.println(t.toString());
                     }
                 }
             );

@@ -63,7 +63,6 @@ public class Player {
 
 
 
-	// TODO
 	/**
 	 * Gets the points the player has
 	 * 
@@ -76,7 +75,6 @@ public class Player {
 		return points;
 	}
 
-	// TODO
 	/**
 	 * sets the players points
 	 * 
@@ -90,7 +88,6 @@ public class Player {
 		this.points = points;
 	}
 
-	// TODO
 	/**
 	 * gets the name of the player
 	 * 
@@ -103,7 +100,6 @@ public class Player {
 		return name;
 	}
 
-	// TODO
 	/**
 	 * Sets the name of the player to param value
 	 * 

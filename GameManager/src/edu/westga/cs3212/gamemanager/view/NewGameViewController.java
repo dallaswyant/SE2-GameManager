@@ -85,6 +85,7 @@ public class NewGameViewController {
 
     @FXML
     void cancel_clicked(ActionEvent event) throws IOException {
+    	Main.theManager.getPlayersInCurrentGame().clear();
     	Stage currentStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
     	FXMLLoader loader = new FXMLLoader();
     	loader.setLocation(Main.class.getResource(Main.GAME_LIST_VIEW));

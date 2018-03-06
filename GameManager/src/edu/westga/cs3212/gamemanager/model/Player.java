@@ -18,6 +18,7 @@ public class Player {
 	private String name;
 	private IntegerProperty playerScore;
     private StringProperty playerName;
+    private StringProperty toString;
 
 	/**
 	 * Player constructor
@@ -42,6 +43,7 @@ public class Player {
 		this.points = points;
 		this.playerName = new SimpleStringProperty(name);
 		this.playerScore = new SimpleIntegerProperty(points);
+		this.toString = new SimpleStringProperty(name + "   " + points + "pts");
 
 	}
 
@@ -60,6 +62,9 @@ public class Player {
 	public void setPlayerName(String name) {
 		this.playerName.set(name);
 	}
+	
+	
+
 
 
 
@@ -99,6 +104,7 @@ public class Player {
 	public String getName() {
 		return name;
 	}
+
 
 	/**
 	 * Sets the name of the player to param value

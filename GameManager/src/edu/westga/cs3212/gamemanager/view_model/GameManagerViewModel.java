@@ -165,6 +165,7 @@ public class GameManagerViewModel {
 	 * @postcondition: current game is saved.
 	 */
 	public void saveCurrentGame() {
+		this.playersInCurrentGame = FXCollections.observableList(this.theUser.getCurrentGame().getPlayers());
 		Object[] players = this.playersInCurrentGame.toArray();
 		ArrayList<Player> playerList = new ArrayList<Player>();
 		for (int i = 0; i < players.length; i++) {

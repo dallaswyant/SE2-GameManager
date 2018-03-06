@@ -90,6 +90,10 @@ public class GameViewController {
 
 	@FXML
 	void addPlayer_clicked(ActionEvent event) {
+		if(Main.theManager.getTheUser().getCurrentGame().getNumberOfPlayers()>=8) {
+			Alert newAlert = new Alert(AlertType.ERROR,"Cannot have more than 8 players.");
+			newAlert.show();
+		} else {
 		Dialog<Pair<String, String>> dialog = new Dialog<>();
 		dialog.setTitle("Add new Player");
 		dialog.setHeaderText("Please input the name and the score for the new player.");
@@ -143,8 +147,10 @@ public class GameViewController {
 			Main.theManager.getTheUser().getCurrentGame().addPlayer(newPlayer);
 			this.players
 					.setItems(FXCollections.observableList(Main.theManager.getTheUser().getCurrentGame().getPlayers()));
+			this.players.refresh();
 			
 		});
+		}
 	}
 
 	private void saveGame() {
@@ -179,10 +185,10 @@ public class GameViewController {
 						Dialog<Pair<String, String>> dialog = new Dialog<>();
 						dialog.setTitle("Edit selected player");
 						dialog.setHeaderText("Edit the selected player");
-
+						ButtonType deleteButton = new ButtonType("Delete",ButtonData.APPLY);
+						
 						ButtonType confirmButton = new ButtonType("Confirm", ButtonData.OK_DONE);
-						dialog.getDialogPane().getButtonTypes().addAll(confirmButton, ButtonType.CANCEL);
-
+						dialog.getDialogPane().getButtonTypes().addAll(confirmButton, deleteButton, ButtonType.CANCEL);
 						GridPane grid = new GridPane();
 						grid.setHgap(10);
 						grid.setVgap(10);
@@ -200,20 +206,14 @@ public class GameViewController {
 						grid.add(new Label("Points:"), 0, 1);
 						grid.add(newPlayerPoints, 1, 1);
 
-						Node loginButton = dialog.getDialogPane().lookupButton(confirmButton);
-						loginButton.setDisable(true);
-
-						newPlayerName.textProperty().addListener((observable, oldValue, newValue) -> {
-							loginButton.setDisable(newValue.trim().isEmpty());
-						});
-
 						dialog.getDialogPane().setContent(grid);
 
-						Platform.runLater(() -> newPlayerName.requestFocus());
 
 						dialog.setResultConverter(dialogButton -> {
 							if (dialogButton == confirmButton) {
 								return new Pair<>(newPlayerName.getText(), newPlayerPoints.getText());
+							} else if(dialogButton == deleteButton) {
+								return new Pair<>("delete","delete");
 							}
 							return null;
 						});
@@ -221,6 +221,18 @@ public class GameViewController {
 						Optional<Pair<String, String>> result = dialog.showAndWait();
 
 						result.ifPresent(playerNamePoints -> {
+							if(result.get().getKey()=="delete") {
+								if(Main.theManager.getTheUser().getCurrentGame().getNumberOfPlayers()<=1) {
+									Alert newAlert = new Alert(AlertType.ERROR,"Cannot have less than 1 player.");
+									newAlert.show();
+								} else {
+								Main.theManager.getTheUser().getCurrentGame().removePlayer(playerToEdit);
+								System.out.println("hi");
+								GameViewController.this.players.setItems(FXCollections
+										.observableList(Main.theManager.getTheUser().getCurrentGame().getPlayers()));
+								GameViewController.this.players.refresh();
+								}
+							} else {
 							int points = 0;
 							try {
 								points = Integer.parseInt(playerNamePoints.getValue());
@@ -234,6 +246,8 @@ public class GameViewController {
 							Main.theManager.getTheUser().getCurrentGame().addPlayer(playerToEdit);
 							GameViewController.this.players.setItems(FXCollections
 									.observableList(Main.theManager.getTheUser().getCurrentGame().getPlayers()));
+							GameViewController.this.players.refresh();
+							}
 						});
 					}
 				});

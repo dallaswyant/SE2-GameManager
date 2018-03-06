@@ -1,5 +1,7 @@
 package edu.westga.cs3212.gamemanager.model;
 
+import java.util.Comparator;
+
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -12,7 +14,7 @@ import javafx.beans.property.StringProperty;
  * @version 2/13/18
  *
  */
-public class Player {
+public class Player implements Comparable<Player>{
 
 	private int points;
 	private String name;
@@ -160,4 +162,20 @@ public class Player {
 		return this.name + "   " + this.points + "pts";
 	}
 
+	@Override
+	public int compareTo(Player arg0) {
+		// TODO Auto-generated method stub
+		return this.getPoints()-arg0.getPoints();
+	}
+	
+	public static Comparator<Player> PlayerComparator = new Comparator<Player>() {
+	    public int compare(Player person, Player anotherPerson) {
+	      int points = person.getPoints();
+	      int points2 = anotherPerson.getPoints();
+	      return points2-points;
+
+	      
+	  };
+	};
 }
+

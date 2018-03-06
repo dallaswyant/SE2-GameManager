@@ -63,6 +63,7 @@ public class GameViewController {
 		if (this.players.getSelectionModel().getSelectedItem() != null) {
 			this.players.getSelectionModel().getSelectedItem()
 					.removePoints(Main.theManager.getTheUser().getCurrentGame().getPointIncrementValue());
+			Main.theManager.getTheUser().getCurrentGame().getPlayers().sort(Player.PlayerComparator);
 			this.players.refresh();
 		}
 	}
@@ -72,6 +73,7 @@ public class GameViewController {
 		if (this.players.getSelectionModel().getSelectedItem() != null) {
 			this.players.getSelectionModel().getSelectedItem()
 					.addPoints(Main.theManager.getTheUser().getCurrentGame().getPointIncrementValue());
+			Main.theManager.getTheUser().getCurrentGame().getPlayers().sort(Player.PlayerComparator);
 			this.players.refresh();
 		}
 
@@ -145,9 +147,11 @@ public class GameViewController {
 			}
 			Player newPlayer = new Player(playerNamePoints.getKey(), points);
 			Main.theManager.getTheUser().getCurrentGame().addPlayer(newPlayer);
+			Main.theManager.getTheUser().getCurrentGame().getPlayers().sort(Player.PlayerComparator);
 			this.players
 					.setItems(FXCollections.observableList(Main.theManager.getTheUser().getCurrentGame().getPlayers()));
 			this.players.refresh();
+			
 			
 		});
 		}
@@ -159,6 +163,7 @@ public class GameViewController {
 
 	@FXML
 	void initialize() {
+		Main.theManager.getTheUser().getCurrentGame().getPlayers().sort(Player.PlayerComparator);
 		this.players.setItems(FXCollections.observableList(Main.theManager.getTheUser().getCurrentGame().getPlayers()));
 		this.gameNameLabel.setText(Main.theManager.getTheUser().getCurrentGame().toString());
 		this.players.setCellFactory(new Callback<ListView<Player>, ListCell<Player>>() {
@@ -227,7 +232,7 @@ public class GameViewController {
 									newAlert.show();
 								} else {
 								Main.theManager.getTheUser().getCurrentGame().removePlayer(playerToEdit);
-								System.out.println("hi");
+								Main.theManager.getTheUser().getCurrentGame().getPlayers().sort(Player.PlayerComparator);
 								GameViewController.this.players.setItems(FXCollections
 										.observableList(Main.theManager.getTheUser().getCurrentGame().getPlayers()));
 								GameViewController.this.players.refresh();
@@ -244,6 +249,7 @@ public class GameViewController {
 							playerToEdit.setPoints(points);
 							Main.theManager.getTheUser().getCurrentGame().removePlayer(originalPlayer);
 							Main.theManager.getTheUser().getCurrentGame().addPlayer(playerToEdit);
+							Main.theManager.getTheUser().getCurrentGame().getPlayers().sort(Player.PlayerComparator);
 							GameViewController.this.players.setItems(FXCollections
 									.observableList(Main.theManager.getTheUser().getCurrentGame().getPlayers()));
 							GameViewController.this.players.refresh();

@@ -52,6 +52,15 @@ public class GameManagerViewModel {
 			}
 			this.theUser.addInProgressGame(newGame);
 		}
+		for (int i = 0; i < 10; i++) {
+			Game newGame = new Game("COMPLETEDGAME" + i);
+			Random random = new Random();
+			for (int j = 0; j < (random.nextInt(7) + 1); j++) {
+				newGame.addPlayer(new Player("PLAYER" + j, random.nextInt(100)));
+			}
+			newGame.setCompleteStatus(true);
+			this.theUser.addCompletedGame(newGame);
+		}
 	}
 
 	/**

@@ -34,8 +34,17 @@ public class GameListViewController {
     private Button newgame_btn;
 
     @FXML
-    void completed_clicked(MouseEvent event) {
-
+    void completed_clicked(MouseEvent event) throws IOException {
+    	if(this.completed_listview.getSelectionModel().getSelectedItem()!=null) {
+    		Game currentGame = this.completed_listview.getSelectionModel().getSelectedItem();
+    		Main.theManager.getTheUser().setCurrentGame(currentGame);
+    		Stage currentStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        	FXMLLoader loader = new FXMLLoader();
+        	loader.setLocation(Main.class.getResource(Main.COMPLETED_GAME_VIEW));
+        	loader.load();
+        	Scene gameView = new Scene(loader.getRoot());
+        	currentStage.setScene(gameView);
+    	}
     }
 
     @FXML

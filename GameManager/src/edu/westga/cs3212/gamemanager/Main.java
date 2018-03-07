@@ -18,6 +18,7 @@ public class Main extends Application {
 	public static final String LANDING_VIEW = "view/LandingView.fxml";
 	public static final String NEW_GAME_VIEW = "view/NewGameView.fxml";
 	public static final String GAME_VIEW = "view/GameView.fxml";
+	public static final String COMPLETED_GAME_VIEW = "view/CompletedGameView.fxml";
 	public static GameManagerViewModel theManager = new GameManagerViewModel();
 	
 	@Override

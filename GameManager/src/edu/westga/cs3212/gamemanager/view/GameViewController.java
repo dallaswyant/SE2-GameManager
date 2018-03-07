@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import edu.westga.cs3212.gamemanager.Main;
+import edu.westga.cs3212.gamemanager.model.Game;
 import edu.westga.cs3212.gamemanager.model.Player;
 import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
@@ -82,6 +83,7 @@ public class GameViewController {
 	@FXML
 	void return_clicked(ActionEvent event) throws IOException {
 		this.saveGame();
+		Main.theManager.getPlayersInCurrentGame().clear();
 		Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(Main.class.getResource(Main.GAME_LIST_VIEW));

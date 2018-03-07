@@ -1,7 +1,6 @@
 package edu.westga.cs3212.gamemanager.view;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import edu.westga.cs3212.gamemanager.Main;
 import edu.westga.cs3212.gamemanager.model.Player;
@@ -30,7 +29,6 @@ import javafx.stage.Stage;
 
 	    @FXML
 	    void back_clicked(ActionEvent event) throws IOException {
-	    	//GO BACK TO GAMELISTVIEW
 	    	Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(Main.class.getResource(Main.GAME_LIST_VIEW));
@@ -46,7 +44,7 @@ import javafx.stage.Stage;
 	    	Main.theManager.getTheUser().getCurrentGame().getPlayers().sort(Player.PlayerComparator);
 	    	for(int i = 0;i<Main.theManager.getTheUser().getCurrentGame().getNumberOfPlayers();i++) {
 	    		if(i==0) {
-	    			winner_txt.setText(Main.theManager.getTheUser().getCurrentGame().getPlayers().get(i).toString());
+	    			this.winner_txt.setText(Main.theManager.getTheUser().getCurrentGame().getPlayers().get(i).toString());
 	    		} else {
 	    		results += Main.theManager.getTheUser().getCurrentGame().getPlayers().get(i).toString() + System.lineSeparator();
 	    		}

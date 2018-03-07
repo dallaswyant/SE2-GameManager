@@ -112,6 +112,10 @@ public class User {
 	public ArrayList<Game> getInProgressGames() {
 		return this.inProgress;
 	}
+	
+	public void setInProgressGames(ArrayList<Game> games) {
+		this.inProgress = games;
+	}
 
 	/**
 	 * Returns the username of user

@@ -168,14 +168,6 @@ public class GameManagerViewModel {
 	public void addPlayersToCurrentGame(Player newPlayer) {
 		this.playersInCurrentGame.add(newPlayer);
 	}
-	
-	public void setLastMovedGame(Game gameToSet) {
-		this.lastMovedGame = gameToSet;
-	}
-	
-	public Game getLastMovedGame() {
-		return this.lastMovedGame;
-	}
 
 	/**
 	 * Saves the current game

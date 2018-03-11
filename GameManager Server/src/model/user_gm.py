@@ -51,6 +51,6 @@ class UserManager:
             self._completedGames.remove(game)
         if(game in self._inProgress):
             self._inProgress.remove(game)
-        #TODO completed status
+        #TODO getcompleted status
         self._completedGames.append(game)
         

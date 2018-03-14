@@ -69,14 +69,6 @@ public class GameListViewController {
     void inprogress_clicked(MouseEvent event) throws IOException {
     	if(this.inprogress_listview.getSelectionModel().getSelectedItem()!=null&&event.getButton()==MouseButton.PRIMARY) {
     		Game currentGame = this.inprogress_listview.getSelectionModel().getSelectedItem();
-<<<<<<< HEAD
-=======
-    		if(currentGame==Main.theManager.getLastMovedGame()) {
-    			//Needs to be here for it to not allow
-    			//user to click on empty cell still
-    			//containing the last game for some reason
-    		} else {
->>>>>>> master
     			Main.theManager.getTheUser().setCurrentGame(currentGame);
     			Stage currentStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
     			FXMLLoader loader = new FXMLLoader();
@@ -84,11 +76,8 @@ public class GameListViewController {
     			loader.load();
     			Scene gameView = new Scene(loader.getRoot());
     			currentStage.setScene(gameView);
-<<<<<<< HEAD
     		
-=======
-    		}
->>>>>>> master
+
     	}
     }
 
@@ -131,10 +120,9 @@ public class GameListViewController {
 					@Override
 					protected void updateItem(Game t, boolean bln) {
 						super.updateItem(t, bln);
-<<<<<<< HEAD
+
 						if(bln) return;
-=======
->>>>>>> master
+
 						if (t != null) {
 							setText(t.toString());
 						}
@@ -154,10 +142,9 @@ public class GameListViewController {
 							Main.theManager.getTheUser().getInProgressGames().remove(cell.getItem());
 							Main.theManager.getTheUser().getCompletedGames().add(cell.getItem());
 						}
-<<<<<<< HEAD
-=======
+
 						Main.theManager.setLastMovedGame(cell.getItem());
->>>>>>> master
+
 						GameListViewController.this.inprogress_listview.refresh();
 						GameListViewController.this.completed_listview.refresh();
 					}
@@ -168,10 +155,8 @@ public class GameListViewController {
 					if (isNowEmpty) {
 						cell.setText("");
 						cell.setContextMenu(null);
-<<<<<<< HEAD
 						GameListViewController.this.inprogress_listview.getSelectionModel().clearSelection();
-=======
->>>>>>> master
+
 					} else {
 						cell.setContextMenu(contextMenu);
 					}

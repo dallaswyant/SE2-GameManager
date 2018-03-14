@@ -167,6 +167,17 @@ public class GameManagerViewModel {
 	
 	public void addPlayersToCurrentGame(Player newPlayer) {
 		this.playersInCurrentGame.add(newPlayer);
+<<<<<<< HEAD
+=======
+	}
+	
+	public void setLastMovedGame(Game gameToSet) {
+		this.lastMovedGame = gameToSet;
+	}
+	
+	public Game getLastMovedGame() {
+		return this.lastMovedGame;
+>>>>>>> master
 	}
 
 	/**

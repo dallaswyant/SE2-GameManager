@@ -1,5 +1,7 @@
 # SE2-GameManager
 
+THOU SHALT NOT UPLOAD ZIP FILES TO THE REPO!!!!!!!!
+
 Installation Instructions:
 
 Install Java 9 (http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html)

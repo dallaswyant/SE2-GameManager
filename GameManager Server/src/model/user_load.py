@@ -1,3 +1,4 @@
+from model.game_load import Game
 '''
 Created on Mar 1, 2018
 
@@ -17,15 +18,32 @@ class User:
         self._completedGames = []
         self._inProgress = []
         self._currentGame = Game("Default Game Name")
-        
-    def getUsername(self):
-        return self._username
+    
+    def addCompletedGame(self, game):
+        if(game == None):
+            raise ValueError("Game must exist")
+        if(game in self._completedGames):
+            self._completedGames.remove(game)
+        if(game in self._inProgress):
+            self._inProgress.remove(game)
+        #TODO getcompleted status
+        self._completedGames.append(game)
     
     def getCompletedGames(self):
         return self._completedGames
-   
+    
     def getInProgressGames(self):
         return self._inProgress
+    
+    def getUsername(self):
+        return self._username
+    
+    def setUsername(self, username):
+        if(username == None):
+            raise ValueError("Invalid username")
+        if(username == ""):
+            raise ValueError("Username cannot be empty")
+        self._username = username
     
     def getCurrentGame(self):
         return self._currentGame
@@ -38,20 +56,7 @@ class User:
     def setInProgressGames(self, games):
         self._inProgress = games
     
-    def setUsername(self, username):
-        if(username == None):
-            raise ValueError("Invalid username")
-        if(username == ""):
-            raise ValueError("Username cannot be empty")
-        self._username = username
     
-    def addCompletedGame(self, game):
-        if(game == None):
-            raise ValueError("Game must exist")
-        if(game in self._completedGames):
-            self._completedGames.remove(game)
-        if(game in self._inProgress):
-            self._inProgress.remove(game)
-        #TODO getcompleted status
-        self._completedGames.append(game)
+    
+    
         

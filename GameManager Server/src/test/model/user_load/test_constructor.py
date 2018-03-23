@@ -1,4 +1,5 @@
 from unittest import TestCase
+from src.model.user_load import User
 
 
 class TestConstructor(TestCase):
@@ -17,5 +18,3 @@ class TestConstructor(TestCase):
         assert not user.getCompletedGames()
         assert not user.getInProgressGames()
         self.assertEqual("Default Game Name", user.getCurrentGame(), "check for default game name")
-        
-       

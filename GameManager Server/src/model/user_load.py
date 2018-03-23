@@ -8,7 +8,7 @@ Created on Mar 1, 2018
 class User:
     '''TODO
     username: if '''
-    def _init_(self, username) :
+    def __init__(self, username) :
         if(username == None):
             raise ValueError("username cannot be none")
         if(username == ""):

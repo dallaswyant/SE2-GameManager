@@ -5,12 +5,12 @@ Created on Mar 5, 2018
 '''
 
 class Game:
-    def _init_(self, name, pointsIncrementValue = None):
+    def __init__(self, name, pointsIncrementValue = None):
         if(name == None):
             raise ValueError("Name cannot be None")
         if(name == ""):
             raise ValueError("Name cannot be empty")
-        if(pointsIncrementValue < 1):
+        if(int(pointsIncrementValue) < 1):
             raise ValueError("Increments cannot be below 1")
         if(not isinstance(pointsIncrementValue, int)):
             raise ValueError("Must be integer")

@@ -13,9 +13,13 @@ class TestConstructor(TestCase):
         with self.assertRaises(ValueError):
             User("")
             
-    def testValidUserConstructorName(self):
+    def testValidUserConstructorDefault(self):
         user = User("Tim")
         self.assertEqual("Tim", user.getUsername(), "check for username")
+        self.assertEqual([], user.getCompletedGames(), "check for completed games")
+        self.assertEqual([], user.getInProgressGames(), "check for in-progress games")
+        self.assertEqual("Default Game Name", user.getCurrentGame().toString(), "check for default games")
+        
         
         
         

@@ -1,5 +1,6 @@
 from unittest import TestCase
-from src.model.user_load import User
+from model.user_load import User
+from model.game_load import Game
 
 
 class TestConstructor(TestCase):
@@ -12,9 +13,10 @@ class TestConstructor(TestCase):
         with self.assertRaises(ValueError):
             User("")
             
-    def testValidUserConstructor(self):
+    def testValidUserConstructorName(self):
         user = User("Tim")
-        self.assertEqual("Tim", user.getUsername, "check for name")
-        assert not user.getCompletedGames()
-        assert not user.getInProgressGames()
-        self.assertEqual("Default Game Name", user.getCurrentGame(), "check for default game name")
+        self.assertEqual("Tim", user.getUsername(), "check for username")
+        
+        
+        
+        

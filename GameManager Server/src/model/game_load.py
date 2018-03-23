@@ -10,6 +10,8 @@ class Game:
             raise ValueError("Name cannot be None")
         if(name == ""):
             raise ValueError("Name cannot be empty")
+        if(pointsIncrementValue == None):
+            self._pointsIncrementValue = 1
         if(int(pointsIncrementValue) < 1):
             raise ValueError("Increments cannot be below 1")
         if(not isinstance(pointsIncrementValue, int)):

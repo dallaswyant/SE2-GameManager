@@ -5,7 +5,7 @@ Created on Mar 5, 2018
 '''
 
 class Game:
-    def __init__(self, name, pointsIncrementValue = None):
+    def __init__(self, name, pointsIncrementValue):
         if(name == None):
             raise ValueError("Name cannot be None")
         if(name == ""):

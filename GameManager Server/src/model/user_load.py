@@ -17,7 +17,7 @@ class User:
         self._username = username
         self._completedGames = []
         self._inProgress = []
-        self._currentGame = Game("Default Game Name")
+        self._currentGame = Game("Default Game Name", 1)
     
     def addCompletedGame(self, game):
         if(game == None):

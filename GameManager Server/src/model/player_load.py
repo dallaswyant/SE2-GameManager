@@ -42,6 +42,6 @@ class Player:
         self._playerScore = self._playerScore - amount
     
     def toString(self):
-        return self._playerName + " " + self._playerScore + "pts"
+        return self._playerName + " " + str(self._playerScore) + "pts"
     #TODO COMPARATOR
    

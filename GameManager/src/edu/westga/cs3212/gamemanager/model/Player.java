@@ -164,7 +164,6 @@ public class Player implements Comparable<Player>{
 
 	@Override
 	public int compareTo(Player arg0) {
-		// TODO Auto-generated method stub
 		return this.getPoints()-arg0.getPoints();
 	}
 	

@@ -3,9 +3,9 @@ from model.user_load import User
 from model.game_load import Game
 
 
-class TestAddCompletedGame(TestCase):
+class TestAddInProgressGame(TestCase):
         
-    def testNoneAddCompleteGame(self):
+    def testNoneAddInProgress(self):
         user = User("Neo")
         with self.assertRaises(ValueError):
             user.addCompletedGame(None)

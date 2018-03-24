@@ -10,27 +10,27 @@ class TestAddInProgressGame(TestCase):
         with self.assertRaises(ValueError):
             user.addCompletedGame(None)
         
-    def testAddCompleteGameAlreadyInCompleteGameList(self):
+    def testAddInProgressGameAlreadyInCompleteGameList(self):
         user = User("Tim")
         game = Game("BioWar", 35)
         game2 = Game("Drue", 10)
-        completed = [game, game2]
-        user._completedGames = completed
+        inProgres = [game, game2]
+        user._inProgress = inProgres
         
-        user.addCompletedGame(game)
-        self.assertTrue(user._completedGames.__contains__(game), "check contains")
+        user.addInProgressGame(game)
+        self.assertTrue(user._inProgress.__contains__(game), "check contains")
     
-    def testAddCompleteGames(self):
+    def testInProgressGames(self):
         user = User("Tim")
         game = Game("BioWar", 35)
         game2 = Game("Drue", 10)
         
-        user.addCompletedGame(game)
-        user.addCompletedGame(game2)
+        user.addInProgressGame(game)
+        user.addInProgressGame(game2)
         
-        self.assertEqual(2, len(user._completedGames), "check for completed games added")
+        self.assertEqual(2, len(user._inProgress), "check for completed games added")
        
-    def testAddCompleteGameToCompleteFromInProgressList(self):
+    def testAddInProgressFromCompleteGameList(self):
         
         user = User("Tim")
         game1 = Game("InfinityWar", 10)
@@ -38,11 +38,11 @@ class TestAddInProgressGame(TestCase):
         game3 = Game("StarWar", 12)
         game4 = Game("Puzzles", 1)
         
-        inProgressGames = [game2, game3]
-        user._inProgress = inProgressGames
-        user.addCompletedGame(game2)
-        self.assertFalse(user._inProgress.__contains__(game2), "check for game2 removed from inProgress")
-        self.assertEqual(1, len(user._completedGames), "check for size")
+        complete = [game2, game3]
+        user._completedGames = complete
+        user.addInProgressGame(game3)
+        self.assertFalse(user._completedGames.__contains__(game3), "check for game2 removed from inProgress")
+        self.assertEqual(1, len(user._inProgress), "check for size")
                
         
         

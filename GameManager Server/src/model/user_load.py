@@ -26,8 +26,16 @@ class User:
             self._completedGames.remove(game)
         if(game in self._inProgress):
             self._inProgress.remove(game)
-        #TODO getcompleted status
         self._completedGames.append(game)
+    
+    def addInProgressGame(self, game):
+        if(game == None):
+            raise ValueError("Game must exist")
+        if(game in self._completedGames):
+            self._completedGames.remove(game)
+        if(game in self._inProgress):
+            self._inProgress.remove(game)
+        self._inProgress.append(game)
     
     def getCompletedGames(self):
         return self._completedGames

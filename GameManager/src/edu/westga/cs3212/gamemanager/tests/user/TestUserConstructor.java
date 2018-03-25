@@ -10,40 +10,30 @@ import edu.westga.cs3212.gamemanager.model.User;
 
 class TestUserConstructor {
 	
-	@Test 
-	public void testUserNullConstructor() {
-		
+	@Test
+	void testUserConstructorWithNull() {		
 		
 		Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-			User user = new User(null);
-			user.getUsername();
+			User testUser = new User(null);
 		});
+		
 		assertEquals("Invalid username", exception.getMessage());
 	}
 	
 	@Test
-	public void testUserEmptyConstructor() {
+	void testUserConstructorWithEmptyString() {
 		
 		Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-			User user = new User("");
-			user.getUsername();
+			User testUser = new User("");
 		});
-		assertEquals("Username not entered", exception.getMessage());
-	
-	}
-	
-	
-	
-	
-	void testUserValidConstructor() {
-		Game game = new Game("Game1");
-		Game game2 = new Game("Game2");
-		User user1 = new User("Django");
-		user1.addCompletedGame(game);
-		user1.addInProgressGame(game2);
 		
-		assertEquals(user1.getUsername(), "Django");
+		assertEquals("Username not entered", exception.getMessage());	
 	}
 	
-
+	@Test
+	void testUserConstructorValid() {
+		User testUser = new User("Master Cheif");
+		
+		assertEquals(testUser, testUser);
+	}
 }

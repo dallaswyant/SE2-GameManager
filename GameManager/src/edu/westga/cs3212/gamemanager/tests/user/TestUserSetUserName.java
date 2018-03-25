@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import edu.westga.cs3212.gamemanager.model.User;
 
-class TestSetUsername {
+class TestUserSetUserName {
 	@Test
 	void testNullUsername() {
 		

@@ -49,6 +49,7 @@ public class User {
 		if (game == null) {
 			throw new IllegalArgumentException("Game must exist");
 		}
+
 		if (this.inProgress.contains(game)) {
 			this.inProgress.remove(game);
 		}
@@ -112,7 +113,7 @@ public class User {
 	public ArrayList<Game> getInProgressGames() {
 		return this.inProgress;
 	}
-	
+
 	public void setInProgressGames(ArrayList<Game> games) {
 		this.inProgress = games;
 	}
@@ -125,7 +126,7 @@ public class User {
 	 * 
 	 * @return the username of user
 	 */
-	public String getUsername() {
+	public String getUserName() {
 		return this.username;
 	}
 

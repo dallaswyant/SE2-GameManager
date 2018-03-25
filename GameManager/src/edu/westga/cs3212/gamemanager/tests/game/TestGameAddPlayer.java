@@ -1,4 +1,4 @@
-package edu.westga.cs3212.gamemanager.tests;
+package edu.westga.cs3212.gamemanager.tests.game;
 
 import static org.junit.jupiter.api.Assertions.*;
 

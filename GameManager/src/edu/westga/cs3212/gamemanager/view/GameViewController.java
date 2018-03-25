@@ -202,11 +202,11 @@ public class GameViewController {
 						grid.setPadding(new Insets(20, 150, 10, 10));
 
 						TextField newPlayerName = new TextField();
-						newPlayerName.setText(playerToEdit.getName());
-						newPlayerName.setPromptText(playerToEdit.getName());
+						newPlayerName.setText(playerToEdit.getPlayerName());
+						newPlayerName.setPromptText(playerToEdit.getPlayerName());
 						TextField newPlayerPoints = new TextField();
-						newPlayerPoints.setText(Integer.toString(playerToEdit.getPoints()));
-						newPlayerPoints.setPromptText(Integer.toString(playerToEdit.getPoints()));
+						newPlayerPoints.setText(Integer.toString(playerToEdit.getPlayerScore()));
+						newPlayerPoints.setPromptText(Integer.toString(playerToEdit.getPlayerScore()));
 
 						grid.add(new Label("Player name:"), 0, 0);
 						grid.add(newPlayerName, 1, 0);
@@ -247,8 +247,8 @@ public class GameViewController {
 
 							}
 							Player originalPlayer = playerToEdit;
-							playerToEdit.setName(playerNamePoints.getKey());
-							playerToEdit.setPoints(points);
+							playerToEdit.setPlayerName(playerNamePoints.getKey());
+							playerToEdit.setPlayerScore(points);
 							Main.theManager.getTheUser().getCurrentGame().removePlayer(originalPlayer);
 							Main.theManager.getTheUser().getCurrentGame().addPlayer(playerToEdit);
 							Main.theManager.getTheUser().getCurrentGame().getPlayers().sort(Player.PlayerComparator);

@@ -34,21 +34,21 @@ class TestAddPoints {
 	void testAddPointsWithInitialOfZero() {
 		Player player1 = new Player("Tommy", 0);
 		player1.addPoints(50);
-		assertEquals(player1.getPoints(), 50);
+		assertEquals(player1.getPlayerScore(), 50);
 	}
 	
 	@Test
 	void testAddPointsWithInitialOfTen() {
 		Player player1 = new Player("Tommy", 10);
 		player1.addPoints(50);
-		assertEquals(player1.getPoints(), 60);
+		assertEquals(player1.getPlayerScore(), 60);
 	}
 	
 	@Test
 	void testAddPointsWithInitialOfNegativeNum() {
 		Player player1 = new Player("Tommy", -50);
 		player1.addPoints(50);
-		assertEquals(player1.getPoints(), 0);
+		assertEquals(player1.getPlayerScore(), 0);
 	}
 
 }

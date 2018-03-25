@@ -12,15 +12,15 @@ class TestPlayerConstructor {
 	void testPlayerValidConstructor() {
 		Player player1 = new Player("Shaun", 5);
 		
-		assertEquals(player1.getName(), "Shaun");
-		assertEquals(player1.getPoints(), 5);
+		assertEquals(player1.getPlayerName(), "Shaun");
+		assertEquals(player1.getPlayerScore(), 5);
 	}
 	
 	@Test
 	public void testPlayerWithNullName() {
 		Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 			Player player = new Player(null, 4);
-			player.getName();
+			player.getPlayerName();
 		});
 		assertEquals("Invalid name", exception.getMessage());
 	}
@@ -29,7 +29,7 @@ class TestPlayerConstructor {
 	public void testPlayerNameEmptysConstructor() {
 		Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 			Player player = new Player("", 5);
-			player.getName();
+			player.getPlayerName();
 		});
 		assertEquals("Name not entered", exception.getMessage());
 	}
@@ -37,7 +37,7 @@ class TestPlayerConstructor {
 	@Test
 	void testPlayerWithNegativePoints() {
 		Player player1 = new Player("David", -50);
-		assertEquals(player1.getPoints(), -50);
+		assertEquals(player1.getPlayerScore(), -50);
 	}
 	
 	

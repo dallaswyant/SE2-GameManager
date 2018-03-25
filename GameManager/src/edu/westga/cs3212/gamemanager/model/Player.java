@@ -49,19 +49,35 @@ public class Player implements Comparable<Player> {
 
 	}
 
-	public int getPlayerScore() {
-		return this.playerScore.get();
-	}
-
-	public String getPlayerName() {
-		return this.playerName.get();
-	}
-
+	/**
+	 * Sets the player objects score to the specified score.
+	 * 
+	 * @param score
+	 *            The score to set.
+	 */
 	public void setPlayerScore(int score) {
+		this.points = score;
 		this.playerScore.set(score);
 	}
 
+	/**
+	 * Sets the player objects name to the specified name.
+	 * 
+	 * @precondition: name !=null && name.isEmpty() != true
+	 * @postcondition: name is set to param value
+	 * @param name
+	 *            name of the player
+	 * @param name
+	 *            The name to set.
+	 */
 	public void setPlayerName(String name) {
+		if (name == null) {
+			throw new IllegalArgumentException("Invalid name");
+		}
+		if (name.isEmpty()) {
+			throw new IllegalArgumentException("Name not entered");
+		}
+		this.name = name;
 		this.playerName.set(name);
 	}
 
@@ -73,21 +89,8 @@ public class Player implements Comparable<Player> {
 	 * 
 	 * @return points the player has
 	 */
-	public int getPoints() {
-		return points;
-	}
-
-	/**
-	 * sets the players points
-	 * 
-	 * @precondition: none
-	 * @postcondition: points are set to param value
-	 * 
-	 * @param points
-	 *            points the player will have
-	 */
-	public void setPoints(int points) {
-		this.points = points;
+	public int getPlayerScore() {
+		return this.points;
 	}
 
 	/**
@@ -98,26 +101,8 @@ public class Player implements Comparable<Player> {
 	 * 
 	 * @return the name of the player
 	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * Sets the name of the player to param value
-	 * 
-	 * @precondition: name !=null && name.isEmpty() != true
-	 * @postcondition: name is set to param value
-	 * @param name
-	 *            name of the player
-	 */
-	public void setName(String name) {
-		if (name == null) {
-			throw new IllegalArgumentException("Invalid name");
-		}
-		if (name.isEmpty()) {
-			throw new IllegalArgumentException("Name not entered");
-		}
-		this.name = name;
+	public String getPlayerName() {
+		return this.name;
 	}
 
 	/**
@@ -133,7 +118,7 @@ public class Player implements Comparable<Player> {
 		if (amount < 0) {
 			throw new IllegalArgumentException("amount to add must be >= 0");
 		}
-		this.points = this.getPoints() + amount;
+		this.points = this.getPlayerScore() + amount;
 	}
 
 	/**
@@ -149,7 +134,7 @@ public class Player implements Comparable<Player> {
 		if (amount < 0) {
 			throw new IllegalArgumentException("amount to add must be <= 0");
 		}
-		this.points = this.getPoints() - amount;
+		this.points = this.getPlayerScore() - amount;
 	}
 
 	public String toString() {
@@ -158,13 +143,13 @@ public class Player implements Comparable<Player> {
 
 	@Override
 	public int compareTo(Player arg0) {
-		return this.getPoints() - arg0.getPoints();
+		return this.getPlayerScore() - arg0.getPlayerScore();
 	}
 
 	public static Comparator<Player> PlayerComparator = new Comparator<Player>() {
 		public int compare(Player person, Player anotherPerson) {
-			int points = person.getPoints();
-			int points2 = anotherPerson.getPoints();
+			int points = person.getPlayerScore();
+			int points2 = anotherPerson.getPlayerScore();
 			return points2 - points;
 
 		};

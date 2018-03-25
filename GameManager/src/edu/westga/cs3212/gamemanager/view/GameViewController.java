@@ -152,8 +152,7 @@ public class GameViewController {
 			Main.theManager.getTheUser().getCurrentGame().getPlayers().sort(Player.PlayerComparator);
 			this.players
 					.setItems(FXCollections.observableList(Main.theManager.getTheUser().getCurrentGame().getPlayers()));
-			this.players.refresh();
-			
+			this.players.refresh();			
 			
 		});
 		}

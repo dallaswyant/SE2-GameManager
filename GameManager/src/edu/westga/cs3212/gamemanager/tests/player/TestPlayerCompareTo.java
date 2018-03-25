@@ -39,4 +39,14 @@ class TestPlayerCompareTo {
 	void testCompareToPlayersReverse() {
 		assertEquals(-25, this.testPlayer2.compareTo(this.testPlayer));
 	}
+	
+	@Test
+	void testPlayerStaticCompare() {
+		assertEquals(-25, Player.PlayerComparator.compare(testPlayer, testPlayer2));
+	}
+	
+	@Test
+	void testPlayerStaticCompareReverse() {
+		assertEquals(25, Player.PlayerComparator.compare(testPlayer2, testPlayer));
+	}
 }

@@ -115,8 +115,8 @@ public class Player implements Comparable<Player> {
 	 *            amount of points to be added
 	 */
 	public void addPoints(int amount) {
-		if (amount < 0) {
-			throw new IllegalArgumentException("amount to add must be >= 0");
+		if (amount <= 0) {
+			throw new IllegalArgumentException("amount to add must be > 0");
 		}
 		this.points = this.getPlayerScore() + amount;
 	}
@@ -131,19 +131,23 @@ public class Player implements Comparable<Player> {
 	 *            amount of points to be remove
 	 */
 	public void removePoints(int amount) {
-		if (amount < 0) {
-			throw new IllegalArgumentException("amount to add must be <= 0");
+		if (amount <= 0) {
+			throw new IllegalArgumentException("amount to remove must be > 0");
 		}
 		this.points = this.getPlayerScore() - amount;
 	}
 
-	public String toString() {
-		return this.name + "   " + this.points + "pts";
-	}
-
+	/**
+	 * Compares this player to another returning their score difference.
+	 * 
+	 * @param player
+	 *            The player to compare this to
+	 *            
+	 * @return Difference in 2 players score
+	 */
 	@Override
-	public int compareTo(Player arg0) {
-		return this.getPlayerScore() - arg0.getPlayerScore();
+	public int compareTo(Player player) {
+		return this.getPlayerScore() - player.getPlayerScore();
 	}
 
 	public static Comparator<Player> PlayerComparator = new Comparator<Player>() {

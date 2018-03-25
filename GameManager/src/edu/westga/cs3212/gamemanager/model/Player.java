@@ -14,13 +14,13 @@ import javafx.beans.property.StringProperty;
  * @version 2/13/18
  *
  */
-public class Player implements Comparable<Player>{
+public class Player implements Comparable<Player> {
 
 	private int points;
 	private String name;
 	private IntegerProperty playerScore;
-    private StringProperty playerName;
-    private StringProperty toString;
+	private StringProperty playerName;
+	private StringProperty toString;
 
 	/**
 	 * Player constructor
@@ -49,7 +49,7 @@ public class Player implements Comparable<Player>{
 
 	}
 
-	public Integer getPlayerScore() {
+	public int getPlayerScore() {
 		return this.playerScore.get();
 	}
 
@@ -64,11 +64,6 @@ public class Player implements Comparable<Player>{
 	public void setPlayerName(String name) {
 		this.playerName.set(name);
 	}
-	
-	
-
-
-
 
 	/**
 	 * Gets the points the player has
@@ -106,7 +101,6 @@ public class Player implements Comparable<Player>{
 	public String getName() {
 		return name;
 	}
-
 
 	/**
 	 * Sets the name of the player to param value
@@ -157,24 +151,22 @@ public class Player implements Comparable<Player>{
 		}
 		this.points = this.getPoints() - amount;
 	}
-	
+
 	public String toString() {
 		return this.name + "   " + this.points + "pts";
 	}
 
 	@Override
 	public int compareTo(Player arg0) {
-		return this.getPoints()-arg0.getPoints();
+		return this.getPoints() - arg0.getPoints();
 	}
-	
-	public static Comparator<Player> PlayerComparator = new Comparator<Player>() {
-	    public int compare(Player person, Player anotherPerson) {
-	      int points = person.getPoints();
-	      int points2 = anotherPerson.getPoints();
-	      return points2-points;
 
-	      
-	  };
+	public static Comparator<Player> PlayerComparator = new Comparator<Player>() {
+		public int compare(Player person, Player anotherPerson) {
+			int points = person.getPoints();
+			int points2 = anotherPerson.getPoints();
+			return points2 - points;
+
+		};
 	};
 }
-

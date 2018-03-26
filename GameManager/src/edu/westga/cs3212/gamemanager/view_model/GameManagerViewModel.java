@@ -40,7 +40,13 @@ public class GameManagerViewModel {
 		this.playersInCurrentGame = FXCollections.observableList(this.theUser.getCurrentGame().getPlayers());
 		this.lastMovedGame = null;
 	}
-	
+
+	/**
+	 * Clears players in current game
+	 * 
+	 * @precondition: none
+	 * @postcondition: playersInCurrentGame is cleared
+	 */
 	public void clearPlayersInCurrentGame() {
 		this.playersInCurrentGame = FXCollections.observableList(new ArrayList<Player>());
 	}
@@ -157,22 +163,53 @@ public class GameManagerViewModel {
 	 * 
 	 * @return players in current game
 	 */
-	/**public ObservableList<Player> getPlayersInCurrentGame() {
-		this.playersInCurrentGame = FXCollections.observableList(this.theUser.getCurrentGame().getPlayers());
-		return this.playersInCurrentGame;
-	}**/
+	/**
+	 * public ObservableList<Player> getPlayersInCurrentGame() {
+	 * this.playersInCurrentGame =
+	 * FXCollections.observableList(this.theUser.getCurrentGame().getPlayers());
+	 * return this.playersInCurrentGame; }
+	 **/
 	public ObservableList<Player> getPlayersInCurrentGame() {
 		return this.playersInCurrentGame;
 	}
-	
+
+	/**
+	 * Adds player to current game
+	 * 
+	 * @precondition: newPlayer != null
+	 * @postcondition: player is added
+	 * @param newPlayer
+	 *            player to add
+	 */
 	public void addPlayersToCurrentGame(Player newPlayer) {
+		if (newPlayer == null) {
+			throw new IllegalArgumentException("Player is null");
+		}
 		this.playersInCurrentGame.add(newPlayer);
 	}
-	
+
+	/**
+	 * sets last moved game
+	 * 
+	 * @precondition gameToSet != null
+	 * @postcondition: lastMoveGame is set
+	 * @param gameToSet
+	 *            game to set to last moved
+	 */
 	public void setLastMovedGame(Game gameToSet) {
+		if (gameToSet == null) {
+			throw new IllegalArgumentException("game is null");
+		}
 		this.lastMovedGame = gameToSet;
 	}
-	
+
+	/**
+	 * Gets last moved game
+	 * 
+	 * @precondition: none
+	 * @postcondition: none
+	 * @return last moved game
+	 */
 	public Game getLastMovedGame() {
 		return this.lastMovedGame;
 	}

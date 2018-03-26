@@ -1,8 +1,6 @@
 from model.user_load import User
 class ServiceVisitManager:
     def __init__(self):
-        self._activeVisits = {}
-        self._loadVisits()
         
         self._activateUsers = {}
         self._loadingUsers()

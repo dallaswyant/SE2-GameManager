@@ -45,7 +45,7 @@ class User:
     
     @return the id for the player
     '''
-    def getVisitId(self):
+    def getPlayerId(self):
         return self._playerId
     
     def addInProgressGame(self, game):

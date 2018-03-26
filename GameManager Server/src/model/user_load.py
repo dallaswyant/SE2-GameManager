@@ -6,6 +6,7 @@ Created on Mar 1, 2018
 @version: spring 2018
 '''
 class User:
+    _idCounter = 0
     '''TODO
     username: if '''
     def __init__(self, username) :
@@ -20,6 +21,7 @@ class User:
         self._completedGames = []
         self._inProgress = []
         self._currentGame = Game("Default Game Name", 1)
+        self._playerId = self._getNextId()
     
     def addCompletedGame(self, game):
         if(game == None):
@@ -31,6 +33,20 @@ class User:
         if(game in self._inProgress):
             self._inProgress.remove(game)
         self._completedGames.append(game)
+    '''
+    Determines the next id to be used
+    '''
+    def _getNextId(self):
+        User._idCounter+=1
+        return User._idCounter
+    
+    '''
+    Get the id for the player
+    
+    @return the id for the player
+    '''
+    def getVisitId(self):
+        return self._playerId
     
     def addInProgressGame(self, game):
         if(game == None):

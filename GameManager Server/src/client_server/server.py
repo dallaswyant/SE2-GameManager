@@ -1,18 +1,18 @@
 import zmq
 import json
-from model.user_load import User
+from client_server.user_manager import ServiceUserManager
 from client_server import constants
 
 class Server:
         
     def __init__(self):
-        self._gameUser = User()
+        self._userManager = ServiceUserManager
         
         
     def _handleRequest(self, message):
-        if (message["op"] == "create visit"):
-            status, serviceId, message = self._visitManager.createServiceVisit(message["customer name"], message["customer address"], message["description"])
-            response = {constants.KEY_STATUS:status, constants.KEY_SERVICE_ID:serviceId, constants.KEY_MESSAGE:message}
+        if (message["op"] == "create user"):
+            status, usersId, message = self._userManager.createUser(message["Username"])
+            response = {constants.KEY_STATUS:status, constants.KEY_SERVICE_ID:usersId, constants.KEY_MESSAGE:message}
             return response
     
     def run(self):
@@ -27,4 +27,4 @@ class Server:
             request = json.loads(socket.recv_string())
         
 if(__name__ == "__main__"):
-   Server().run()
+    Server().run()

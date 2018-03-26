@@ -1,5 +1,5 @@
 from model.user_load import User
-class ServiceVisitManager:
+class ServiceUserManager:
     def __init__(self):
         
         self._activateUsers = {}

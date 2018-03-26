@@ -1,15 +1,15 @@
-# SE2-GameManager
+## SE2-GameManager
 
 Spring 2018 - Group 2
 
 # Installation Instructions:
 
-# Game Manager Application
+## Game Manager Application
 Install Java 9 (http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html)
 Get Eclipse IDE for Java Developers (http://www.eclipse.org/downloads/eclipse-packages/)
 Import the GameManager Application project into Eclipse
 
-# Game Manager Server
+## Game Manager Server
 Install Java 9 (http://www.oracle.com/technetwork/java/javase/downloads/jdk9-downloads-3848520.html)
 Install Python 3.6+ (https://www.python.org/downloads/)
 Get Eclipse IDE for Java Developers (http://www.eclipse.org/downloads/eclipse-packages/)

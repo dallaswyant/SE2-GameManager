@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import edu.westga.cs3212.gamemanager.model.Player;
-import edu.westga.cs3212.gamemanager.model.User;
 
 /**
  * @author Group 2

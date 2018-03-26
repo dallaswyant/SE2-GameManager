@@ -5,17 +5,20 @@ Created on Mar 1, 2018
 @author: Bryan, Dallas, Josh, Caleb
 @version: spring 2018
 '''
+
+
 class User:
     _idCounter = 0
     '''TODO
     username: if '''
+
     def __init__(self, username) :
         if(username == None):
-            raise ValueError("username cannot be none")
+            raise ValueError("user name cannot be none")
         if (not isinstance(username, str)):
             raise ValueError("name value must be string")
         if(username == ""):
-            raise ValueError("username cannot be empty")
+            raise ValueError("user name cannot be empty")
         
         self._username = username
         self._completedGames = []
@@ -33,11 +36,13 @@ class User:
         if(game in self._inProgress):
             self._inProgress.remove(game)
         self._completedGames.append(game)
+
     '''
     Determines the next id to be used
     '''
+
     def _getNextId(self):
-        User._idCounter+=1
+        User._idCounter += 1
         return User._idCounter
     
     '''
@@ -45,6 +50,7 @@ class User:
     
     @return the id for the player
     '''
+
     def getPlayerId(self):
         return self._playerId
     
@@ -70,11 +76,11 @@ class User:
     
     def setUsername(self, username):
         if(username == None):
-            raise ValueError("Invalid username")
+            raise ValueError("Invalid user name")
         if (not isinstance(username, str)):
             raise ValueError("Must be a string")
         if(username == ""):
-            raise ValueError("Username cannot be empty")
+            raise ValueError("User name cannot be empty")
         self._username = username
     
     def getCurrentGame(self):
@@ -91,8 +97,5 @@ class User:
         if (not isinstance(games, list)):
             raise ValueError("Must be a list of games")
         self._inProgress = games
-    
-    
-    
     
         

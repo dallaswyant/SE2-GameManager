@@ -4,7 +4,10 @@ Created on Mar 5, 2018
 @author: Bryan, Caleb, Dallas, Josh
 '''
 from model.player_load import Player
+
+
 class Game:
+
     def __init__(self, name, pointsIncrementValue):
         if(name == None):
             raise ValueError("Name cannot be None")
@@ -23,16 +26,15 @@ class Game:
         self._name = name
         self._isCompleted = False
     
-    
     def addPlayer(self, player):
         if(player == None):
             raise ValueError("Player must exist")
-        if(not isinstance(player, Player )):
+        if(not isinstance(player, Player)):
             raise ValueError("insertion must be a Player object")
         self._players.append(player)
         
     def removePlayer(self, player):
-        if(not isinstance(player, Player )):
+        if(not isinstance(player, Player)):
             raise ValueError("insertion must be a Player object")
         if player not in self._players:
             raise ValueError("List must contain the player")
@@ -55,6 +57,4 @@ class Game:
     
     def getPointsIncrementValue(self):
         return self._pointsIncrementValue
-        
-        
          

@@ -3,8 +3,11 @@ Created on Mar 1, 2018
 
 @author: Bryan, Caleb, Dallas, Josh
 '''
+
+
 class Player:
-    def __init__(self,name, points ):
+
+    def __init__(self, name, points):
         if(name == None):
             raise ValueError('Player name must exist')
         if (not isinstance(name, str)):
@@ -53,5 +56,5 @@ class Player:
     
     def toString(self):
         return self._playerName + " " + str(self._playerScore) + "pts"
-    #TODO COMPARATOR
+    # TODO COMPARATOR
    

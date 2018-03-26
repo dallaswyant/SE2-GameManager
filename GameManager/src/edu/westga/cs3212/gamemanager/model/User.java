@@ -114,6 +114,11 @@ public class User {
 		return this.inProgress;
 	}
 
+	/**
+	 * Sets the list of inprogress games
+	 * 
+	 * @param games The list to set
+	 */
 	public void setInProgressGames(ArrayList<Game> games) {
 		this.inProgress = games;
 	}
@@ -130,9 +135,8 @@ public class User {
 		return this.username;
 	}
 
-	/**
-	 * 
-	 * sets the username of the user
+	/** 
+	 * Sets the username of the user
 	 * 
 	 * @precondition: username != null && username.isEmpty() != true
 	 * @postcondition: username is set to param value

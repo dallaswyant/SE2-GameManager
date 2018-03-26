@@ -38,7 +38,7 @@ class TestUserAddCompletedGame {
 	@Test
 	void testUserAddCompletedGameNull() {
 		Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-			this.testUser.addInProgressGame(null);
+			this.testUser.addCompletedGame(null);
 		});
 
 		assertEquals("Game must exist", exception.getMessage());

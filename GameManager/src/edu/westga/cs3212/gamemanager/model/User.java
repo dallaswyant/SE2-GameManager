@@ -49,6 +49,7 @@ public class User {
 		if (game == null) {
 			throw new IllegalArgumentException("Game must exist");
 		}
+
 		if (this.inProgress.contains(game)) {
 			this.inProgress.remove(game);
 		}
@@ -112,7 +113,12 @@ public class User {
 	public ArrayList<Game> getInProgressGames() {
 		return this.inProgress;
 	}
-	
+
+	/**
+	 * Sets the list of inprogress games
+	 * 
+	 * @param games The list to set
+	 */
 	public void setInProgressGames(ArrayList<Game> games) {
 		this.inProgress = games;
 	}
@@ -125,13 +131,12 @@ public class User {
 	 * 
 	 * @return the username of user
 	 */
-	public String getUsername() {
+	public String getUserName() {
 		return this.username;
 	}
 
-	/**
-	 * 
-	 * sets the username of the user
+	/** 
+	 * Sets the username of the user
 	 * 
 	 * @precondition: username != null && username.isEmpty() != true
 	 * @postcondition: username is set to param value

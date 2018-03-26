@@ -58,7 +58,7 @@ public class Game {
 			throw new IllegalArgumentException("Game name not entered");
 		}
 		if (pointIncrementValue < 1) {
-			throw new IllegalArgumentException("Cannot have negative point increment value");
+			throw new IllegalArgumentException("Cannot have zero/negative point increment value");
 		}
 		this.players = new ArrayList<Player>();
 		this.name = name;

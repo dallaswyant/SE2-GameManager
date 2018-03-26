@@ -30,6 +30,7 @@ class Game:
     adds player
     @precondition: player != none player must be player
     @postcondition: player is added
+    @param player: player to add
     '''
 
     def addPlayer(self, player):
@@ -43,6 +44,7 @@ class Game:
     removes player
     @precondition: player != none player must be player
     @postcondition: player is removed
+    @param player: player to remove
     ''' 
 
     def removePlayer(self, player):
@@ -76,6 +78,7 @@ class Game:
     sets completed status
     @postcondition: status != none
     @postcondition: status 
+    @param status: status to set
     ''' 
 
     def setCompleteStatus(self, status):

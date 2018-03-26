@@ -53,6 +53,6 @@ class TestPlayerRemovePoints {
 	void testPlayerRemovePointsPositiveAmount() {
 		this.testPlayer.removePoints(5);
 
-		assertEquals(5, (int)this.testPlayer.getPlayerScore());
+		assertEquals(5, this.testPlayer.getPoints());
 	}
 }

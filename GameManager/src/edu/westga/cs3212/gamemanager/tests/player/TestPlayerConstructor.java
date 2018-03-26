@@ -15,7 +15,7 @@ class TestPlayerConstructor {
 		assertEquals(player1.getPlayerName(), "Shaun");
 		assertEquals(player1.getPlayerScore(), score);
 	}
-	
+
 	@Test
 	public void testPlayerWithNullName() {
 		Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -24,8 +24,8 @@ class TestPlayerConstructor {
 		});
 		assertEquals("Invalid name", exception.getMessage());
 	}
-	
-	@Test 
+
+	@Test
 	public void testPlayerNameEmptysConstructor() {
 		Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
 			Player player = new Player("", 5);
@@ -33,15 +33,19 @@ class TestPlayerConstructor {
 		});
 		assertEquals("Name not entered", exception.getMessage());
 	}
-	
+
 	@Test
 	void testPlayerWithNegativePoints() {
 		Player player1 = new Player("David", -50);
 		Integer score = new Integer(-50);
 		assertEquals(player1.getPlayerScore(), score);
 	}
-	
-	
-	
+
+	@Test
+	void testConstructorWithToString() {
+		Player player1 = new Player("David", 50);
+
+		assertEquals("David 50pts", player1.toString());
+	}
 
 }

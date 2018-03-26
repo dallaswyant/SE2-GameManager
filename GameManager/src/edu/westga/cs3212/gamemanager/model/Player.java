@@ -14,13 +14,13 @@ import javafx.beans.property.StringProperty;
  * @version 2/13/18
  *
  */
-public class Player implements Comparable<Player>{
+public class Player implements Comparable<Player> {
 
 	private int points;
 	private String name;
 	private IntegerProperty playerScore;
-    private StringProperty playerName;
-    private StringProperty toString;
+	private StringProperty playerName;
+	private StringProperty toString;
 
 	/**
 	 * Player constructor
@@ -49,26 +49,50 @@ public class Player implements Comparable<Player>{
 
 	}
 
+	/**
+	 * Returns the players score
+	 * 
+	 * @return The score of the player
+	 */
 	public Integer getPlayerScore() {
 		return this.playerScore.get();
 	}
 
+	/**
+	 * Returns the players name
+	 * 
+	 * @return The name of the player
+	 */
 	public String getPlayerName() {
 		return this.playerName.get();
 	}
 
+	/**
+	 * Sets the players score
+	 * 
+	 * @param score
+	 *            The score to set
+	 */
 	public void setPlayerScore(int score) {
 		this.playerScore.set(score);
 	}
 
+	/**
+	 * Sets the players name
+	 * 
+	 * @param name
+	 *            The name to set
+	 */
 	public void setPlayerName(String name) {
+		if (name == null) {
+			throw new IllegalArgumentException("Invalid name");
+		}
+		if (name.isEmpty()) {
+			throw new IllegalArgumentException("Name not entered");
+		}
+		this.name = name;
 		this.playerName.set(name);
 	}
-	
-	
-
-
-
 
 	/**
 	 * Gets the points the player has
@@ -80,51 +104,7 @@ public class Player implements Comparable<Player>{
 	 */
 	public int getPoints() {
 		return points;
-	}
-
-	/**
-	 * sets the players points
-	 * 
-	 * @precondition: none
-	 * @postcondition: points are set to param value
-	 * 
-	 * @param points
-	 *            points the player will have
-	 */
-	public void setPoints(int points) {
-		this.points = points;
-	}
-
-	/**
-	 * gets the name of the player
-	 * 
-	 * @precondition: none
-	 * @postcondition: none
-	 * 
-	 * @return the name of the player
-	 */
-	public String getName() {
-		return name;
-	}
-
-
-	/**
-	 * Sets the name of the player to param value
-	 * 
-	 * @precondition: name !=null && name.isEmpty() != true
-	 * @postcondition: name is set to param value
-	 * @param name
-	 *            name of the player
-	 */
-	public void setName(String name) {
-		if (name == null) {
-			throw new IllegalArgumentException("Invalid name");
-		}
-		if (name.isEmpty()) {
-			throw new IllegalArgumentException("Name not entered");
-		}
-		this.name = name;
-	}
+	}	
 
 	/**
 	 * Adds amount to player points
@@ -136,8 +116,8 @@ public class Player implements Comparable<Player>{
 	 *            amount of points to be added
 	 */
 	public void addPoints(int amount) {
-		if (amount < 0) {
-			throw new IllegalArgumentException("amount to add must be >= 0");
+		if (amount <= 0) {
+			throw new IllegalArgumentException("amount to add must be > 0");
 		}
 		this.points = this.getPoints() + amount;
 	}
@@ -146,35 +126,38 @@ public class Player implements Comparable<Player>{
 	 * Removes amount to player points
 	 * 
 	 * @precondition: amount <= 0
-	 * @postcondition: points value increased by amount
+	 * @postcondition: points value decreased by amount
 	 * 
 	 * @param amount
-	 *            amount of points to be remove
+	 *            amount of points to be removed
 	 */
 	public void removePoints(int amount) {
-		if (amount < 0) {
-			throw new IllegalArgumentException("amount to add must be <= 0");
+		if (amount <= 0) {
+			throw new IllegalArgumentException("amount to remove must be > 0");
 		}
 		this.points = this.getPoints() - amount;
 	}
-	
+
+	/**
+	 * Returns a string representation of the object
+	 * 
+	 * @return A string describing the object
+	 */
 	public String toString() {
-		return this.name + "   " + this.points + "pts";
+		return this.name + " " + this.points + "pts";
 	}
 
 	@Override
 	public int compareTo(Player arg0) {
-		return this.getPoints()-arg0.getPoints();
+		return this.getPoints() - arg0.getPoints();
 	}
-	
-	public static Comparator<Player> PlayerComparator = new Comparator<Player>() {
-	    public int compare(Player person, Player anotherPerson) {
-	      int points = person.getPoints();
-	      int points2 = anotherPerson.getPoints();
-	      return points2-points;
 
-	      
-	  };
+	public static Comparator<Player> PlayerComparator = new Comparator<Player>() {
+		public int compare(Player person, Player anotherPerson) {
+			int points = person.getPoints();
+			int points2 = anotherPerson.getPoints();
+			return points2 - points;
+
+		};
 	};
 }
-

@@ -53,6 +53,6 @@ class TestPlayerAddPoints {
 	void testPlayerAddPointsPositiveAmount() {
 		this.testPlayer.addPoints(10);
 		
-		assertEquals(15, (int)this.testPlayer.getPlayerScore());
+		assertEquals(15, this.testPlayer.getPoints());
 	}
 }

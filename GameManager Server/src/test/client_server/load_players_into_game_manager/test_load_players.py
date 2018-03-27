@@ -13,7 +13,7 @@ class TestCreateUserManager(TestCase):
         self.assertEqual(constants.FAIL_ID, idResult, "checking id")
       '''  
    def testValidUser(self):
-        manager = ServiceUserManager
+        manager = ServiceUserManager()
         statusResult, idResult, messageResult = manager.createUser("Jon")
         
         self.assertEqual(constants.SUCCESS_STATUS, statusResult, "checking status")

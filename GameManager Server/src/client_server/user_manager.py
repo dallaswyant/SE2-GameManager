@@ -3,7 +3,7 @@ class ServiceUserManager:
     def __init__(self):
         
         self._activateUsers = {}
-        self._loadingUsers()
+        self._loadUsers()
         
     def _loadUsers(self):
         userloaded1 = User("Jon Snow")

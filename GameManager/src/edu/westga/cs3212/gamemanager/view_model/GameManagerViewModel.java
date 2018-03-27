@@ -95,7 +95,7 @@ public class GameManagerViewModel {
 	 */
 	public void setCompletedGames(ObservableList<Game> completedGames) {
 		if (completedGames == null) {
-			throw new IllegalArgumentException("Completed game list must exist; NULL");
+			throw new IllegalArgumentException("Completed game list must exist");
 		}
 		this.completedGames = completedGames;
 	}
@@ -110,7 +110,7 @@ public class GameManagerViewModel {
 	 */
 	public void setInProgressGames(ObservableList<Game> inProgressGames) {
 		if (inProgressGames == null) {
-			throw new IllegalArgumentException("In progress game list must exist; NULL");
+			throw new IllegalArgumentException("In progress game list must exist");
 		}
 		this.inProgressGames = inProgressGames;
 	}
@@ -126,7 +126,7 @@ public class GameManagerViewModel {
 	 */
 	public void setPlayersInCurrentGame(ObservableList<Player> playersInCurrentGame) {
 		if (playersInCurrentGame == null) {
-			throw new IllegalArgumentException("In progress game list must exist; NULL");
+			throw new IllegalArgumentException("List must exist");
 		}
 		this.playersInCurrentGame = playersInCurrentGame;
 	}

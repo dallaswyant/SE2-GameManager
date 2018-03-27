@@ -29,3 +29,4 @@ class ServiceUserManager:
             usersId = load.getPlayerId
         finally:
             return (status, usersId, message)
+        

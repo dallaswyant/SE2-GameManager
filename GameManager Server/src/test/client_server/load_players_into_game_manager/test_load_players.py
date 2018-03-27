@@ -3,16 +3,15 @@ from unittest import TestCase
 from client_server import constants
 
 class TestCreateUserManager(TestCase):
-   '''     
     def testUsernameNone(self):
-        manager = ServiceUserManager
+        manager = ServiceUserManager()
         
         statusResult, idResult, messageResult = manager.createUser(None)
         
         self.assertEqual(constants.FAIL_STATUS, statusResult, "checking status")
         self.assertEqual(constants.FAIL_ID, idResult, "checking id")
-      '''  
-   def testValidUser(self):
+      
+    def testValidUser(self):
         manager = ServiceUserManager()
         statusResult, idResult, messageResult = manager.createUser("Jon")
         

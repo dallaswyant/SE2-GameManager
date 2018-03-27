@@ -21,7 +21,7 @@ class TestRun(TestCase):
         self._socket.send_string(json.dumps("exit"))
             
     def testCreateServiceVisit(self):
-        request = {"op":"create visit","customer name":"name", "customer address":"address", "description":"description"}
+        request = {"op":"create user","Username":"Username"}
         self._socket.send_string(json.dumps(request))
         response = json.loads(self._socket.recv_string())
         

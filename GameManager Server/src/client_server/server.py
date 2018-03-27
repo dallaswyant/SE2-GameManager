@@ -6,7 +6,7 @@ from client_server import constants
 class Server:
         
     def __init__(self):
-        self._userManager = ServiceUserManager
+        self._userManager = ServiceUserManager()
         
         
     def _handleRequest(self, message):

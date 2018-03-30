@@ -86,36 +86,6 @@ public class GameManagerViewModel {
 	}
 
 	/**
-	 * Sets the completed games to param value
-	 * 
-	 * @precondition: completedGames != null
-	 * @postcondition: this.completedGames is set to param value
-	 * @param completedGames
-	 *            list of completed games
-	 */
-	public void setCompletedGames(ObservableList<Game> completedGames) {
-		if (completedGames == null) {
-			throw new IllegalArgumentException("Completed game list must exist");
-		}
-		this.completedGames = completedGames;
-	}
-
-	/**
-	 * Sets the in progress games to param value
-	 * 
-	 * @precondition: inProgressGames != null
-	 * @postcondition: this.inProgressGames is set to param value
-	 * @param inProgressGames
-	 *            list of in progress games
-	 */
-	public void setInProgressGames(ObservableList<Game> inProgressGames) {
-		if (inProgressGames == null) {
-			throw new IllegalArgumentException("In progress game list must exist");
-		}
-		this.inProgressGames = inProgressGames;
-	}
-
-	/**
 	 * Sets the players In Current Game to param value
 	 * 
 	 * @precondition: playersInCurrentGame != null
@@ -186,32 +156,6 @@ public class GameManagerViewModel {
 			throw new IllegalArgumentException("Player is null");
 		}
 		this.playersInCurrentGame.add(newPlayer);
-	}
-
-	/**
-	 * sets last moved game
-	 * 
-	 * @precondition gameToSet != null
-	 * @postcondition: lastMoveGame is set
-	 * @param gameToSet
-	 *            game to set to last moved
-	 */
-	public void setLastMovedGame(Game gameToSet) {
-		if (gameToSet == null) {
-			throw new IllegalArgumentException("game is null");
-		}
-		this.lastMovedGame = gameToSet;
-	}
-
-	/**
-	 * Gets last moved game
-	 * 
-	 * @precondition: none
-	 * @postcondition: none
-	 * @return last moved game
-	 */
-	public Game getLastMovedGame() {
-		return this.lastMovedGame;
 	}
 
 	/**

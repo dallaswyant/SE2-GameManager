@@ -16,8 +16,6 @@ import javafx.beans.property.StringProperty;
  */
 public class Player implements Comparable<Player> {
 
-	private int points;
-	private String name;
 	private IntegerProperty playerScore;
 	private StringProperty playerName;
 	private StringProperty toString;
@@ -41,8 +39,6 @@ public class Player implements Comparable<Player> {
 			throw new IllegalArgumentException("Name not entered");
 		}
 
-		this.name = name;
-		this.points = points;
 		this.playerName = new SimpleStringProperty(name);
 		this.playerScore = new SimpleIntegerProperty(points);
 		this.toString = new SimpleStringProperty(name + "   " + points + "pts");
@@ -90,21 +86,9 @@ public class Player implements Comparable<Player> {
 		if (name.isEmpty()) {
 			throw new IllegalArgumentException("Name not entered");
 		}
-		this.name = name;
 		this.playerName.set(name);
 	}
 
-	/**
-	 * Gets the points the player has
-	 * 
-	 * @precondition: none
-	 * @postcondition: none
-	 * 
-	 * @return points the player has
-	 */
-	public int getPoints() {
-		return points;
-	}	
 
 	/**
 	 * Adds amount to player points
@@ -119,7 +103,7 @@ public class Player implements Comparable<Player> {
 		if (amount <= 0) {
 			throw new IllegalArgumentException("amount to add must be > 0");
 		}
-		this.points = this.getPoints() + amount;
+		this.playerScore.set(this.playerScore.get() + amount);
 	}
 
 	/**
@@ -135,7 +119,7 @@ public class Player implements Comparable<Player> {
 		if (amount <= 0) {
 			throw new IllegalArgumentException("amount to remove must be > 0");
 		}
-		this.points = this.getPoints() - amount;
+		this.playerScore.set(this.playerScore.get() - amount);
 	}
 
 	/**
@@ -144,18 +128,18 @@ public class Player implements Comparable<Player> {
 	 * @return A string describing the object
 	 */
 	public String toString() {
-		return this.name + " " + this.points + "pts";
+		return this.playerName.get() + " " + this.playerScore.get() + "pts";
 	}
 
 	@Override
 	public int compareTo(Player arg0) {
-		return this.getPoints() - arg0.getPoints();
+		return this.playerScore.get() - arg0.playerScore.get();
 	}
 
 	public static Comparator<Player> PlayerComparator = new Comparator<Player>() {
 		public int compare(Player person, Player anotherPerson) {
-			int points = person.getPoints();
-			int points2 = anotherPerson.getPoints();
+			int points = person.playerScore.get();
+			int points2 = anotherPerson.playerScore.get();
 			return points2 - points;
 
 		};

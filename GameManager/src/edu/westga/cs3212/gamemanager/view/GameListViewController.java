@@ -143,7 +143,6 @@ public class GameListViewController {
 							Main.theManager.getTheUser().getCompletedGames().add(cell.getItem());
 						}
 
-						Main.theManager.setLastMovedGame(cell.getItem());
 
 						GameListViewController.this.inprogress_listview.refresh();
 						GameListViewController.this.completed_listview.refresh();

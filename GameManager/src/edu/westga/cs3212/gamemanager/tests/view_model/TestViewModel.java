@@ -52,50 +52,6 @@ class TestViewModel {
 	}
 
 	@Test
-	void testGMVMSetCompletedGames() {
-		ArrayList<Game> testArray = new ArrayList<Game>();
-		testArray.add(new Game("PUBG"));
-		testArray.add(new Game("Halo"));
-		ObservableList<Game> testList = FXCollections.observableList(testArray);
-
-		this.testGMVM.setCompletedGames(testList);
-
-		assertEquals(2, this.testGMVM.getCompletedGames().size());
-	}
-
-	@Test
-	void testGMVMSetCompletedGamesWithNull() {
-		ObservableList<Game> testList = null;
-
-		Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-			this.testGMVM.setCompletedGames(testList);
-		});
-		assertEquals("Completed game list must exist", exception.getMessage());
-	}
-
-	@Test
-	void testGMVMSetInProgressGamesWithNull() {
-		ObservableList<Game> testList = null;
-
-		Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-			this.testGMVM.setInProgressGames(testList);
-		});
-		assertEquals("In progress game list must exist", exception.getMessage());
-	}
-
-	@Test
-	void testGMVMSetInProgressGames() {
-		ArrayList<Game> testArray = new ArrayList<Game>();
-		testArray.add(new Game("PUBG"));
-		testArray.add(new Game("Halo"));
-		ObservableList<Game> testList = FXCollections.observableList(testArray);
-
-		this.testGMVM.setInProgressGames(testList);
-
-		assertEquals(2, this.testGMVM.getCompletedGames().size());
-	}
-
-	@Test
 	void testGMVMSetPlayersInCurrentGameWithNull() {
 		ObservableList<Player> testList = null;
 
@@ -142,23 +98,5 @@ class TestViewModel {
 		this.testGMVM.addPlayersToCurrentGame(testPlayer);
 
 		assertEquals(1, this.testGMVM.getPlayersInCurrentGame().size());
-	}
-
-	@Test
-	void testGMVMSetLastMovedGameWithNull() {
-		Game testGame = null;
-
-		Throwable exception = assertThrows(IllegalArgumentException.class, () -> {
-			this.testGMVM.setLastMovedGame(testGame);
-		});
-		assertEquals("game is null", exception.getMessage());
-	}
-
-	@Test
-	void testGMVMSetLastMovedGame() {
-		Game testGame = new Game("Russian Roulette");
-		this.testGMVM.setLastMovedGame(testGame);
-
-		assertEquals("Russian Roulette", this.testGMVM.getLastMovedGame().toString());
 	}
 }

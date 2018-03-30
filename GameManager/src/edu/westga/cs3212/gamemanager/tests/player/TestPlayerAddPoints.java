@@ -52,7 +52,7 @@ class TestPlayerAddPoints {
 	@Test
 	void testPlayerAddPointsPositiveAmount() {
 		this.testPlayer.addPoints(10);
-		
-		assertEquals(15, this.testPlayer.getPoints());
+		int score = this.testPlayer.getPlayerScore();
+		assertEquals(15, score);
 	}
 }

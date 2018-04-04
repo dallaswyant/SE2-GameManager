@@ -156,6 +156,7 @@ public class NewGameViewController {
     	this.playerNames.setCellFactory(TextFieldTableCell.forTableColumn());
     	this.playerScores.setCellFactory(createPlayerScoreCellFactory());
     	this.playerTable.setItems(Main.theManager.getPlayersInCurrentGame());
+    	
     	this.playerNames.setOnEditCommit(
                 new EventHandler<CellEditEvent<Player, String>>() {
                     @Override

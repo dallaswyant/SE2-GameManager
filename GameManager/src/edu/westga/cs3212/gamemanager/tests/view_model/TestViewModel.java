@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
 
 import edu.westga.cs3212.gamemanager.model.Game;
 import edu.westga.cs3212.gamemanager.model.Player;
+import edu.westga.cs3212.gamemanager.model.User;
 import edu.westga.cs3212.gamemanager.view_model.GameManagerViewModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -99,4 +100,37 @@ class TestViewModel {
 
 		assertEquals(1, this.testGMVM.getPlayersInCurrentGame().size());
 	}
+	
+	@Test
+	void testGMVMSetUser() {
+		User dude = new User("Dude");
+		this.testGMVM.setTheUser(dude);
+		
+		assertEquals(dude, this.testGMVM.getTheUser());
+	}
+	
+	@Test
+	void testGMVMSaveCurrentGameSuccess() {
+		User dude = new User("Dude");
+		ArrayList<Game> gameList = new ArrayList<Game>();
+		gameList.add(new Game("Bacci Ball",15));
+		gameList.add(new Game("Rocket League",10));
+		gameList.add(new Game("Chess",2));
+		
+		dude.setInProgressGames(gameList);
+		Game gameToSave = new Game("Chess",2);
+		gameToSave.addPlayer(new Player("Goku",90));
+		gameToSave.addPlayer(new Player("Bu",90));
+		gameToSave.addPlayer(new Player("Piccolo",90));
+		gameToSave.addPlayer(new Player("Krillin",90));
+		dude.addInProgressGame(gameToSave);
+		dude.setCurrentGame(gameToSave);
+		this.testGMVM.setTheUser(dude);
+		this.testGMVM.saveCurrentGame();
+		assertEquals(gameToSave.toString(),dude.getCurrentGame().toString());
+		assertEquals(4, dude.getInProgressGames().size());
+		assertEquals(4, dude.getCurrentGame().getNumberOfPlayers());
+		
+	}
 }
+

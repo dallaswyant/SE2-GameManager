@@ -124,6 +124,10 @@ public class GameManagerViewModel {
 	public User getTheUser() {
 		return this.theUser;
 	}
+	
+	public void setTheUser(User newUser) {
+		this.theUser = newUser;
+	}
 
 	/**
 	 * Returns players in current game
@@ -186,9 +190,9 @@ public class GameManagerViewModel {
 		}
 		if (removalIndex != 55) {
 			this.theUser.getInProgressGames().remove(removalIndex);
+			this.theUser.addInProgressGame(theOldCurrentGame);
 		}
-		this.theUser.addInProgressGame(theOldCurrentGame);
-
+		
 	}
 
 }

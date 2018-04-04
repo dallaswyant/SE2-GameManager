@@ -7,6 +7,8 @@ import java.util.Optional;
 import edu.westga.cs3212.gamemanager.Main;
 import edu.westga.cs3212.gamemanager.model.Game;
 import edu.westga.cs3212.gamemanager.model.Player;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -26,6 +28,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -38,6 +42,9 @@ import javafx.util.Callback;
 import javafx.util.Pair;
 
 public class GameListViewController {
+	
+	@FXML
+    private TabPane tabPane;
 
     @FXML
     private ListView<Game> inprogress_listview;
@@ -105,6 +112,19 @@ public class GameListViewController {
     @FXML
     void initialize() {
 
+    	this.tabPane.getSelectionModel().selectedItemProperty().addListener(
+    		    new ChangeListener<Tab>() {
+    		        @Override
+    		        public void changed(ObservableValue<? extends Tab> ov, Tab t, Tab t1) {
+    		            GameListViewController.this.inprogress_listview.setItems(Main.theManager.getInProgressGames());
+    		        	GameListViewController.this.completed_listview.setItems(Main.theManager.getCompletedGames());
+    		            GameListViewController.this.inprogress_listview.refresh();
+						GameListViewController.this.completed_listview.refresh();
+    		        }
+
+    		    }
+    		);
+    	
     	this.inprogress_listview.setItems(Main.theManager.getInProgressGames());
 
     	this.completed_listview.setItems(Main.theManager.getCompletedGames());
@@ -142,8 +162,6 @@ public class GameListViewController {
 							Main.theManager.getTheUser().getInProgressGames().remove(cell.getItem());
 							Main.theManager.getTheUser().getCompletedGames().add(cell.getItem());
 						}
-
-
 						GameListViewController.this.inprogress_listview.refresh();
 						GameListViewController.this.completed_listview.refresh();
 					}
@@ -153,9 +171,11 @@ public class GameListViewController {
 				cell.emptyProperty().addListener((obs, wasEmpty, isNowEmpty) -> {
 					if (isNowEmpty) {
 						cell.setText("");
-						cell.setContextMenu(null);
+						//cell.setContextMenu(null);
 						GameListViewController.this.inprogress_listview.getSelectionModel().clearSelection();
-
+						GameListViewController.this.completed_listview.getSelectionModel().clearSelection();
+						GameListViewController.this.inprogress_listview.refresh();
+						GameListViewController.this.completed_listview.refresh();
 					} else {
 						cell.setContextMenu(contextMenu);
 					}

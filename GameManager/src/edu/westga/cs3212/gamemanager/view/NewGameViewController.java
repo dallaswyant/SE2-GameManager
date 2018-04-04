@@ -114,7 +114,9 @@ public class NewGameViewController {
 		try {
 			Game newGame = new Game(gameName.getText(),(int)this.pointIncrement_slider.getValue());
 			for(int i = 0; i<this.playerTable.getItems().size();i++) {
+				
 				Player newPlayer = new Player(this.playerNames.getCellData(i),this.playerScores.getCellData(i));
+				System.out.println(this.playerNames.getCellData(i) + " " + this.playerScores.getCellData(i));
 				newGame.addPlayer(newPlayer);
 			}
 	    	Main.theManager.getTheUser().setCurrentGame(newGame);

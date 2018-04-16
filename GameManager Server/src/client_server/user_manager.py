@@ -26,7 +26,7 @@ class ServiceUserManager:
         else:
             self._activateUsers[load.getPlayerId()] = load
             status = "success"
-            usersId = load.getPlayerId
+            usersId = load.getPlayerId()
         finally:
             return (status, usersId, message)
         

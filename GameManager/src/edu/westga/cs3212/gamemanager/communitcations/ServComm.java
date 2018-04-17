@@ -4,7 +4,6 @@
 package edu.westga.cs3212.gamemanager.communitcations;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import edu.westga.cs3212.gamemanager.model.Game;
 import edu.westga.cs3212.gamemanager.model.User;

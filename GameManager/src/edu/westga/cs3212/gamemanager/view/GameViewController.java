@@ -61,21 +61,25 @@ public class GameViewController {
 
 	@FXML
 	void minus_clicked(ActionEvent event) {
+		Player curr = this.players.getSelectionModel().getSelectedItem();
 		if (this.players.getSelectionModel().getSelectedItem() != null) {
 			this.players.getSelectionModel().getSelectedItem()
 					.removePoints(Main.theManager.getTheUser().getCurrentGame().getPointIncrementValue());
 			Main.theManager.getTheUser().getCurrentGame().getPlayers().sort(Player.PlayerComparator);
 			this.players.refresh();
+			this.players.getSelectionModel().select(curr);
 		}
 	}
 
 	@FXML
 	void plus_clicked(ActionEvent event) {
+		Player curr = this.players.getSelectionModel().getSelectedItem();
 		if (this.players.getSelectionModel().getSelectedItem() != null) {
 			this.players.getSelectionModel().getSelectedItem()
 					.addPoints(Main.theManager.getTheUser().getCurrentGame().getPointIncrementValue());
 			Main.theManager.getTheUser().getCurrentGame().getPlayers().sort(Player.PlayerComparator);
 			this.players.refresh();
+			this.players.getSelectionModel().select(curr);
 		}
 
 	}

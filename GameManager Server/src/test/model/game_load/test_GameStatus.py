@@ -1,5 +1,4 @@
 from unittest import TestCase
-from wheel.signatures import assertTrue
 from model.game_load import Game
 from model.player_load import Player
 

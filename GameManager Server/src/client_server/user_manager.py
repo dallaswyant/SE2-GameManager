@@ -29,4 +29,12 @@ class ServiceUserManager:
             usersId = load.getPlayerId()
         finally:
             return (status, usersId, message)
+    
+    def getGames(self):
+        for user in self._loadUsers():
+            if user.getCompletedStatus() == False:
+                return user.getInProgressGames()
+            else:
+                return user.getInProgressGames()
+            
         

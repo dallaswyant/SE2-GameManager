@@ -14,6 +14,8 @@ class Server:
             status, usersId, message = self._userManager.createUser(message["Username"])
             response = {constants.KEY_STATUS:status, constants.KEY_SERVICE_ID:usersId, constants.KEY_MESSAGE:message}
             return response
+        if (message["op"] == "get games"):
+            return self._userManager.getGames()
     
     def run(self):
         context = zmq.Context()

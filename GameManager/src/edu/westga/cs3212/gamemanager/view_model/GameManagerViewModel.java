@@ -23,7 +23,6 @@ public class GameManagerViewModel {
 	private ObservableList<Game> inProgressGames;
 	private User theUser;
 	private ObservableList<Player> playersInCurrentGame;
-	private Game lastMovedGame;
 
 	/**
 	 * Constructor for the game manager class
@@ -38,7 +37,6 @@ public class GameManagerViewModel {
 		this.inProgressGames = FXCollections.observableList(this.theUser.getInProgressGames());
 		this.completedGames = FXCollections.observableList(this.theUser.getCompletedGames());
 		this.playersInCurrentGame = FXCollections.observableList(this.theUser.getCurrentGame().getPlayers());
-		this.lastMovedGame = null;
 	}
 
 	/**

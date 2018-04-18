@@ -14,7 +14,7 @@ class ServiceUserManager:
         self._activateUsers[userloaded2.getPlayerId()] = userloaded2
         self._activateUsers[userloaded3.getPlayerId()] = userloaded3
     
-    def createUser(self, username):
+    def createUser(self, username, games):
         status = ""
         usersId = -1
         message = ""
@@ -29,12 +29,5 @@ class ServiceUserManager:
             usersId = load.getPlayerId()
         finally:
             return (status, usersId, message)
-    
-    def getGames(self):
-        for user in self._loadUsers():
-            if user.getCompletedStatus() == False:
-                return user.getInProgressGames()
-            else:
-                return user.getInProgressGames()
-            
+
         

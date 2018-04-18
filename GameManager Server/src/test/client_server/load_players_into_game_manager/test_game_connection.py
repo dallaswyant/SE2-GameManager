@@ -15,6 +15,7 @@ class TestCreateUserManager(TestCase):
         manager = ServiceUserManager()
         statusResult, idResult, messageResult = manager.createUser("Jon")
         
+        
         self.assertEqual(constants.SUCCESS_STATUS, statusResult, "checking status")
         self.assertNotEqual(constants.FAIL_ID, idResult, "checking id")
         self.assertEqual(constants.SUCCESS_MESSAGE, messageResult, "checking message")

@@ -189,6 +189,8 @@ public class GameManagerViewModel {
 		if (removalIndex != 55) {
 			this.theUser.getInProgressGames().remove(removalIndex);
 			this.theUser.addInProgressGame(theOldCurrentGame);
+		} else {
+			this.theUser.addInProgressGame(theOldCurrentGame);
 		}
 		
 	}
